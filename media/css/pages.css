@@ -1,0 +1,210 @@
+/*///////////----homepage----///////////*/
+.back-home1{
+    background-image: url("../img/back4.jpg");
+    height:100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.text-home1{
+    position: absolute;
+    top: 55%;
+    left: 40%;
+    height: 30%;
+    width: 70%;
+    margin: -15% 0 0 -25%;
+    vertical-align: middle;
+}
+
+/*//////////////////////////////////////*/
+
+
+/*///////////----pathway page----///////////*/
+.back-pathway{
+    background-image: url("../img/back2.jpg");
+    height:100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.text-pathway{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    vertical-align: middle;
+}
+
+/*//////////////////////////////////////*/
+
+/*///////////----pathway result page----///////////*/
+.back-pathway-result{
+    background-image: url("../img/back1.jpg");
+    height:100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.text-pathway-result{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    vertical-align: middle;
+}
+
+/*//////////////////////////////////////*/
+
+/*///////////----enzyme page----///////////*/
+
+.back-enzyme1{
+    background-image: url("../img/back5.jpg");
+    height:100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+.text-enzyme{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    vertical-align: middle;
+}
+
+/*//////////////////////////////////////*/
+
+/*///////////----enzyme result page----///////////*/
+
+.back-enzyme-result{
+    background-image: url("../img/back3.jpg");
+    height:100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+.text-enzyme-result{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    vertical-align: middle;
+}
+
+/*//////////////////////////////////////*/
+
+
+/*///////////----parts page----///////////*/
+
+.back-parts1{
+    background-image: url("../img/back5.jpg");
+    height:100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+.text-parts{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    vertical-align: middle;
+}
+
+/*//////////////////////////////////////*/
+
+/*///////////----parts result page----///////////*/
+
+.back-parts-result{
+    background-image: url("../img/back3.jpg");
+    height:100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+.text-parts-result{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    vertical-align: middle;
+}
+
+/*//////////////////////////////////////*/
+
+
+/*///////////----input----///////////*/
+.input-text{ 
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+}
+
+.input-submit{ 
+    display: inline-block;
+    padding: 10px;
+    text-transform: uppercase;
+    border: 2px solid #2a2a2a;
+    position: relative;
+    margin-top: 30px;
+    margin-right: 30px;
+    font-weight: 600;
+    color: #222;
+    -webkit-transition: 0.5s ease-in;
+    -moz-transition: 0.5s ease-in;
+    transition: 0.5s ease-in;
+    z-index: 1;
+    overflow: hidden;
+    width: 120px;
+    text-align: center;
+}
+
+/*//////////////////////////////////////*/
+
+
+

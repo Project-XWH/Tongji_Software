@@ -1,0 +1,8 @@
+.a-style:link, .a-style:visited{
+    text-decoration: none;
+    color: slategray ;
+}
+.a-style:hover{
+    color:white;
+    text-decoration: none;
+}

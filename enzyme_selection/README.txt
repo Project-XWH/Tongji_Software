@@ -1,0 +1,1 @@
+python3 getpHRange_KMByEnzyme.py 1.14.19.58 'L-tryptophan'
