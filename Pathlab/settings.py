@@ -24,8 +24,9 @@ SECRET_KEY = '7m&p0wmuss-e^d8$5_%&9zw=$o%pl0h(c2@uz^i+#k-$@h+g74'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.pathlab.top', '127.0.0.1']
 
 
 # Application definition
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'path_search'
+    'path_search',
+    'account',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -106,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -122,6 +123,9 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'../media/').replace('\\','/')
 MEDIA_URL = '../media/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(__file__),'../static/').replace('\\','/')
-STATIC_URL = '../static/'
-
+# /Users/xubo/software_env/lib/python3.7/site-packages/django/contrib/admin/static/admin/css/
+STATIC_ROOT = '/Users/xubo/software_env/lib/python3.7/site-packages/django/contrib/admin/static/'
+# STATIC_ROOT = os.path.dirname(__file__) + '../'
+# STATIC_ROOT = '/Users/xubo/Desktop/Pathlab/static/'
+# STATIC_ROOT = os.path.join(os.path.dirname(__file__),'../static/').replace('\\','/')
+STATIC_URL = '/../static/'

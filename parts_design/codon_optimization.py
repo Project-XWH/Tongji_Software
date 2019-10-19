@@ -1,4 +1,14 @@
 # -*- coding:utf-8 -*-
+import pandas
+import pickle
+import re,os
+import math
+import random
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
+from operator import itemgetter
+
+path = os.path.dirname(__file__)
 def get_sequence(file='merged.csv'):
     raw = pandas.read_csv(file)
     raw = raw.head(10)
@@ -35,10 +45,8 @@ def get_cds(seq):
 
 def replace_codon(cds,org):
     '''replace'''
-    with open('./data/parts_design/replace_dic_'+org,'rb') as f:
+    with open(path+'/../data/parts_design/replace_dic_'+org,'rb') as f:
         replace_dic = pickle.load(f)
-
-
     cds_list = []
     for i in range(0,len(cds),3):
         cds_list.append(cds[i:i+3])
@@ -64,7 +72,7 @@ def get_gc(seq):
 
 
 def get_cai(seq,org):  #seq should be upper
-    with open('./data/parts_design/cai_calculation_dic_'+org,'rb') as f:   #org: ecoli/yeast
+    with open(path+'/../data/parts_design/cai_calculation_dic_'+org,'rb') as f:   #org: ecoli/yeast
         calculation_dic = pickle.load(f)
     L = (len(seq) - 3) / 3
     w = 1
@@ -76,15 +84,12 @@ def get_cai(seq,org):  #seq should be upper
 
 
 def gc_optimization(seq,org,n=1,a=0.05):
-    import math
-    import random
-    from operator import itemgetter
     seq = seq.upper()
     gc_mean = {'ecoli':0.58,'yeast':0.383}
     gc_range = [gc_mean[org]*(1-a),gc_mean[org]*(1+a)]
-    print('GC range {}'.format(gc_range))
+    #print('GC range {}'.format(gc_range))
 
-    with open('./data/parts_design/gc_replace_dic_'+org,'rb') as f:
+    with open(path+'/../data/parts_design/gc_replace_dic_'+org,'rb') as f:
         dic = pickle.load(f)
     replace_list = []
     balance_list = []
@@ -134,38 +139,23 @@ def gc_optimization(seq,org,n=1,a=0.05):
                 subseq = ''.join(codon_list[:i] + dic['stable'][codon_list[i]][:1] + codon_list[i + 1:])
                 balance_list.remove(i)
             else:
-                print('no balance list')
+                #print('no balance list')
                 break
 
         return [subseq, gc, max_cai]
 
 
 # input  seq & org[ecj|sac]
-if __name__ == '__main__':
-    import pandas
-    import pickle
-    import re
-    import math
-    from concurrent.futures import ThreadPoolExecutor
-    from functools import partial
-    from operator import itemgetter
-
-
-    #data test for replace codon
-    with open('./data/parts_design/test_data.txt','r') as f:
-        seq = f.readline().strip()
-    #print(seq)
-
+def Codon_Optimization(seq, org):
+    op_results = []
     cds = get_cds(seq)
-    #print(cds)
-
-    org = 'ecoli'
     new_cds = replace_codon(cds,org)
 
     pool = ThreadPoolExecutor(10)
     seqs = [new_cds]*10
-    gc_optimization = partial(gc_optimization,org=org)
-    results = pool.map(gc_optimization,seqs)
+    gc_optimization_ = partial(gc_optimization,org=org)
+
+    results = pool.map(gc_optimization_, seqs)
     outputs = []
     list = []
     for result in results:
@@ -173,6 +163,7 @@ if __name__ == '__main__':
             outputs.append(result)
     outputs  =sorted(outputs,key=itemgetter(2),reverse=True)
     for output in outputs:
+        result = []
         new_seq = output[0]
         difference = []
         before = ''
@@ -186,12 +177,12 @@ if __name__ == '__main__':
                 common += 1
             before = new_seq[i:i + 3]
         diff = ''.join(difference)
-        print('raw {}'.format(cds))
-        print('new {}'.format(new_seq))
-        print('dif {}'.format(diff))
-        print('GC before {}'.format(get_gc(cds)))
-        print('GC after {}'.format(output[1]))
-        print('CAI before {}'.format(get_cai(cds, org)))
-        print('CAI after {}'.format(output[2]))
-        with open('./parts_design/test_data_out','a') as f:
-            f.write(new_seq+'\n')
+        result.append('{}'.format(new_seq))
+        result.append('{}'.format(get_gc(cds)))
+        result.append('{}'.format(output[1]))
+        result.append('{}'.format(get_cai(cds, org)))
+        result.append('{}'.format(output[2]))
+        op_results.append(result)
+        with open(path+'/../data/parts_design/test_data_out.txt','a') as f:
+           f.write(new_seq+'\n')
+    return op_results

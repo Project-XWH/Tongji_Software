@@ -1,0 +1,422 @@
+{
+    "Green Fluorescent Proteins": {
+        "value": 242.45999999999992,
+        "symbolSize": 140,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(253, 227, 167)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(253, 227, 167)",
+                "color": "rgb(253, 227, 167)"
+            }
+        }
+    },
+    "Animals": {
+        "value": 132.172,
+        "symbolSize": 108,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(129, 199, 211)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(129, 199, 211)",
+                "color": "rgb(129, 199, 211)"
+            }
+        }
+    },
+    "Mice": {
+        "value": 119.926,
+        "symbolSize": 104,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(58, 143, 183)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(58, 143, 183)",
+                "color": "rgb(58, 143, 183)"
+            }
+        }
+    },
+    "Female": {
+        "value": 90.356,
+        "symbolSize": 96,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(140, 20, 252)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(140, 20, 252)",
+                "color": "rgb(140, 20, 252)"
+            }
+        }
+    },
+    "Neurons": {
+        "value": 80.69,
+        "symbolSize": 93,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(27, 94, 93)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(27, 94, 93)",
+                "color": "rgb(27, 94, 93)"
+            }
+        }
+    },
+    "Humans": {
+        "value": 68.78800000000001,
+        "symbolSize": 89,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(58, 143, 183)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(58, 143, 183)",
+                "color": "rgb(58, 143, 183)"
+            }
+        }
+    },
+    "Calcium": {
+        "value": 56.934,
+        "symbolSize": 86,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(24,255,255)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(24,255,255)",
+                "color": "rgb(24,255,255)"
+            }
+        }
+    },
+    "Cells": {
+        "value": 56.934,
+        "symbolSize": 86,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(247, 92, 47)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(247, 92, 47)",
+                "color": "rgb(247, 92, 47)"
+            }
+        }
+    },
+    " Cultured": {
+        "value": 56.934,
+        "symbolSize": 86,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(36, 147, 110)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(36, 147, 110)",
+                "color": "rgb(36, 147, 110)"
+            }
+        }
+    },
+    "Drosophila": {
+        "value": 56.934,
+        "symbolSize": 86,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(88, 178, 220)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(88, 178, 220)",
+                "color": "rgb(88, 178, 220)"
+            }
+        }
+    },
+    "Neuromuscular Junction": {
+        "value": 56.934,
+        "symbolSize": 86,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(251, 118, 123)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(251, 118, 123)",
+                "color": "rgb(251, 118, 123)"
+            }
+        }
+    },
+    "Rats": {
+        "value": 56.934,
+        "symbolSize": 86,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(178, 163, 206)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(178, 163, 206)",
+                "color": "rgb(178, 163, 206)"
+            }
+        }
+    },
+    "Visual Cortex": {
+        "value": 56.934,
+        "symbolSize": 86,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(143, 119, 181)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(143, 119, 181)",
+                "color": "rgb(143, 119, 181)"
+            }
+        }
+    },
+    "Recombinant Fusion Proteins": {
+        "value": 47.512,
+        "symbolSize": 83,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(129, 227, 238)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(129, 227, 238)",
+                "color": "rgb(129, 227, 238)"
+            }
+        }
+    },
+    " Tumor": {
+        "value": 46.958,
+        "symbolSize": 83,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(224, 60, 138)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(224, 60, 138)",
+                "color": "rgb(224, 60, 138)"
+            }
+        }
+    },
+    "Cell Line": {
+        "value": 42.712,
+        "symbolSize": 82,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(58, 143, 183)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(58, 143, 183)",
+                "color": "rgb(58, 143, 183)"
+            }
+        }
+    },
+    " Fungal": {
+        "value": 38.56,
+        "symbolSize": 81,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(224,64,251)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(224,64,251)",
+                "color": "rgb(224,64,251)"
+            }
+        }
+    },
+    "Disease Models": {
+        "value": 35.366,
+        "symbolSize": 80,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(225, 107, 140)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(225, 107, 140)",
+                "color": "rgb(225, 107, 140)"
+            }
+        }
+    },
+    " Animal": {
+        "value": 35.366,
+        "symbolSize": 80,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(129, 199, 211)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(129, 199, 211)",
+                "color": "rgb(129, 199, 211)"
+            }
+        }
+    },
+    "Gene Editing": {
+        "value": 35.296,
+        "symbolSize": 80,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(251, 118, 123)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(251, 118, 123)",
+                "color": "rgb(251, 118, 123)"
+            }
+        }
+    },
+    " Messenger": {
+        "value": 33.422,
+        "symbolSize": 79,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(129, 199, 211)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(129, 199, 211)",
+                "color": "rgb(129, 199, 211)"
+            }
+        }
+    },
+    "Embryo": {
+        "value": 29.176000000000002,
+        "symbolSize": 78,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(140, 20, 252)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(140, 20, 252)",
+                "color": "rgb(140, 20, 252)"
+            }
+        }
+    },
+    " Nonmammalian": {
+        "value": 29.176000000000002,
+        "symbolSize": 78,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(130, 130, 130)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(130, 130, 130)",
+                "color": "rgb(130, 130, 130)"
+            }
+        }
+    },
+    "Genetic Engineering": {
+        "value": 23.756,
+        "symbolSize": 76,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(27, 94, 93)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(27, 94, 93)",
+                "color": "rgb(27, 94, 93)"
+            }
+        }
+    },
+    "Epitopes": {
+        "value": 23.756,
+        "symbolSize": 76,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(130, 130, 130)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(130, 130, 130)",
+                "color": "rgb(130, 130, 130)"
+            }
+        }
+    },
+    "Molecular Probes": {
+        "value": 23.756,
+        "symbolSize": 76,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(224,224,224)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(224,224,224)",
+                "color": "rgb(224,224,224)"
+            }
+        }
+    },
+    "Protein Biosynthesis": {
+        "value": 23.756,
+        "symbolSize": 76,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(143, 119, 181)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(143, 119, 181)",
+                "color": "rgb(143, 119, 181)"
+            }
+        }
+    },
+    "Single Molecule Imaging": {
+        "value": 23.756,
+        "symbolSize": 76,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(252, 159, 77)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(252, 159, 77)",
+                "color": "rgb(252, 159, 77)"
+            }
+        }
+    },
+    "Single-Chain Antibodies": {
+        "value": 23.756,
+        "symbolSize": 76,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(58, 143, 183)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(58, 143, 183)",
+                "color": "rgb(58, 143, 183)"
+            }
+        }
+    },
+    "Zebrafish": {
+        "value": 23.756,
+        "symbolSize": 76,
+        "draggable": true,
+        "itemStyle": {
+            "normal": {
+                "borderColor": "rgb(58, 143, 183)",
+                "borderWidth": 4,
+                "shadowBlur": 100,
+                "shadowColor": "rgb(58, 143, 183)",
+                "color": "rgb(58, 143, 183)"
+            }
+        }
+    }
+}

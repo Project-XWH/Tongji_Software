@@ -1,0 +1,814 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pathway result</title>
+    <link href="/media/css/pages.css" rel="stylesheet" type="text/css">
+    <link href="/media/css/alink.css" rel="stylesheet" type="text/css">
+
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+    <script src="/media/js/d3.v5.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style>
+        a{
+          color: #2a2b2f;
+          text-decoration: none;
+          }
+          a:hover{
+          color:lightskyblue;
+          }
+          a:visited{
+          color:none}
+        .path-result-page-back2 {
+            /* background-image: url("../img/back1.jpg"); */
+            background-image: url("/../../../../media/img/result_back.png");
+            background-position: center;
+            background-attachment:fixed;
+            background-size: cover;
+            color: black;
+            margin:0;
+            padding:0;
+/*             background-image: url("www.pathlab.top/media/img/2-03-01.png"); */
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            color: black;
+            margin: 0;
+            padding: 0;
+            /* font-size: 62.5%; */
+        }
+        
+        .path-result-text-back {
+            background-color: rgba(255, 255, 255, 0.5);
+            height: 100%;
+            width: 90vw;
+            margin-left:5vw;
+/*             margin-top: 9vh; */
+/*             margin-bottom: 1vh; */
+/*             z-index: -100000; */
+            position: fixed;
+            box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+            border-radius: 15px;
+        }
+        
+        .path-result-text {
+            position: absolute;
+            top: 30%;
+            left: 45%;
+            width: 60%;
+            margin: -15% 0 0 -25%;
+            vertical-align: middle;
+            text-align: center;
+        }
+        /* .table_class2{
+            text-align: center;
+            color:black;
+            border-collapse:separate;
+            border-collapse:collapse;
+            width: 100%;
+            font-size: 1px;
+            box-shadow: 1px 1px 5px #888888;
+            border-radius: 1px red;
+        }
+        .table_class2 td, .table_class2 th{
+	        font-size:15px;
+	        border:1px solid #888888;
+	        padding:3px 7px 2px 7px;
+        } */
+        
+        .home_img {
+            /* style="position: fixed; margin: 80vh 0vw 0vh 92vw;  width: 5vw"  */
+            position: fixed;
+            margin: 80vh 0vw 0vh 92vw;
+            width: 6vw;
+            z-index: 10000;
+            transition: width 200ms, margin 200ms;
+        }
+        
+        .home_img:hover {
+            width: 7vw;
+            margin: 79.5vh 0vw 0vh 91.5vw;
+            transition: width 200ms, margin 200ms;
+        }
+        
+        table {
+            /*border-collapse: collapse;*/
+            border-spacing: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #444;
+        }
+        
+        .custom_tb tr:hover {
+            background-color: #fbf8e9;
+            transition: all 0.1s ease-in-out;
+        }
+        
+        .custom_tb th,
+        .custom_tb td {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .custom_tb th {
+            background-color: #dce9f9;
+            border-top: none;
+        }
+        
+        .custom_tb td:first-child,
+        .custom_tb th:first-child {
+            border-left: none;
+        }
+        
+        .custom_tb th:first-child {
+            border-radius: 6px 0 0 0;
+        }
+        
+        .custom_tb th:last-child {
+            border-radius: 0 6px 0 0;
+        }
+        
+        .custom_tb tr:last-child td:first-child {
+            border-radius: 0 0 0 6px;
+        }
+        
+        .custom_tb tr:last-child td:last-child {
+            border-radius: 0 0 6px 0;
+        }
+        
+        .custom_tb {
+            width: 80vw;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 1px 1px #ccc;
+        }
+        
+        .report_button {
+            font-size: 20px;
+            background-color: black;
+            border-radius: 15px;
+            color: white;
+            padding: 2vh 2vw 2vh 2vw;
+            outline: none;
+            margin-left: 0vw;
+            transition: margin 200ms, font-size 200ms;
+        }
+        
+        .report_button:hover {
+            /* padding:2vh 3vw 2vh 3vw; */
+            margin-left: 0vw;
+            margin-top: 0.5vw;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        
+        .enzyme_selection {
+            width: 20vw;
+            height: 4vh;
+            background-color: black;
+            color: aliceblue;
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px 0px 0px 0px;
+        }
+        
+        .enzyme_selection:hover {
+            cursor: pointer;
+        }
+        
+        .ball_style {
+            background-color: lightskyblue;
+            width: 6vw;
+            height: 6vw;
+            border-radius: 3vw;
+            outline: none;
+        }
+        
+        .ball_style:hover {
+            cursor: pointer;
+        }
+        
+        svg text,
+        svg .node {
+            cursor: pointer;
+        }
+        
+        svg .selected {
+            fill: red;
+        }
+    </style>
+    <script>
+        // 边距， 宽，高
+        var margin = {
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+        };
+        var outWidth = 45;
+        var outHeight = 35;
+        var width = outWidth - margin.left - margin.right;
+        var height = outHeight - margin.top - margin.bottom;
+        $.config = {
+            link: {
+                enabled: true,
+                distance: 150,
+                strength: -600,
+                iterations: 1
+            },
+            dotR: 37,opacity:1
+        }
+        var svgList = [];
+        var svgList1 = [];
+        var dotColor = d3.scaleOrdinal(d3.schemeCategory10);
+    </script>
+    <script>
+        
+        function isInArray(arr, value){
+            var flag = 'no_exist';
+            for(var i = 0; i < arr.length; i++){
+                if(value == arr[i]){
+                    flag = 'exist';
+                }
+            }
+            return flag;
+        }
+    
+        function menue_show() {
+            var menue = document.getElementById('menue')
+            if (menue.style.visibility == "hidden") {
+                menue.style.visibility = "unset"
+            } else {
+                menue.style.visibility = "hidden"
+            }
+        };
+
+        function sel_seq_show() {
+            var sel_seq_style = document.getElementById('sel_seq')
+            if (sel_seq_style.style.visibility == "hidden") {
+                sel_seq_style.style.visibility = "unset"
+            } else {
+                sel_seq_style.style.visibility = "hidden"
+            }
+        }
+
+
+        $(function() {
+            $("#menue_hide").on("click", function() {
+                var menue = document.getElementById('menue')
+                menue.style.visibility = "hidden"
+            })
+        });
+
+        function com_info(data1) {
+            $.ajax({
+                url: '/compound_info/',
+                type: "POST",
+                data: data1,
+                async: false,
+                // contentType:'text/XML',
+                // processData:false,
+                success: function(data) {
+                    infor = data;
+                },
+                error: function() {
+                    infor = 'none'
+                },
+            })
+            return infor;
+        };
+
+        function Next_node(data1) {
+            $.ajax({
+                url: '/path_show/',
+                type: "POST",
+                data: data1,
+                async: false,
+                // contentType:'text/XML',
+                // processData:false,
+                success: function(data) {
+                    infor = data;
+                },
+                error: function() {
+                    infor = 'none'
+                },
+            })
+            return infor;
+        };
+
+
+        $(document).ready(function() {
+            function NS(id_, svg, infor_id, path_id, k_n, p2, path_data) {
+                var data1 = {
+                    'compound': id_
+                    };
+                infor_data = com_info(data1).split('|');
+
+                $('#' + infor_id + '_ID').html(id_);
+                $('#' + infor_id + '_Name').html(infor_data[0]);
+                $('#' + infor_id + '_FORMULA').html(infor_data[1]);
+                $('#' + infor_id + '_MOL_WEIGHT').html(infor_data[2]);
+                $('#' + infor_id + '_EXACT_MASS').html(infor_data[3]);
+                $('#' + infor_id + '_db_CAS').html(infor_data[4]);
+                $('#' + infor_id + '_db_PubChem').html(infor_data[5]);
+                $('#' + infor_id + '_db_ChEMBL').html(infor_data[6]);
+                $('#' + infor_id + '_db_PDB-CCD').html(infor_data[7]);
+//                 $('#' + infor_id + '_REMARK').html(infor_data[8]);
+                $('#' + infor_id + '_IMG').attr('src', "/../media/img/compound_img/" + id_ + ".jpg");
+                
+                
+                add_path_id = {id:id_};
+                add_path_lk = {"source": p2, "target": id_, "value": 1};
+                
+                if(p2 != id_ && isInArray(path_data.nodes, add_path_id)=='no_exist'){
+                          path_data.nodes.push(add_path_id)
+                }
+                if(p2 != id_ && isInArray(path_data.links, add_path_lk)=='no_exist'){
+                          path_data.links.push(add_path_lk)
+                }
+                
+                p2 = id_
+                chart.data ={
+                    nodes:[],
+                    links:[],
+                };
+                for (var i=0, len=path_data.nodes.length; i<len; i++){
+                          if (isInArray(chart.data.nodes, path_data.nodes[i])=='no_exist'){
+                          chart.data.nodes.push(path_data.nodes[i])
+                          }
+                }
+                          
+                for (var j=0, len=path_data.links.length;j<len;j++  ){
+                          if (isInArray(chart.data.links, path_data.links[j])=='no_exist'){
+                          chart.data.links.push(path_data.links[j])
+                          }
+                }
+                
+                next_node = Next_node(data1).split(',');
+                for (var i in next_node) {
+                    e2 = {
+                        id: next_node[i]
+                    }
+                    f = {
+                            "source": id_,
+                            "target": next_node[i],
+                            "value": 1
+                        }
+                        // if(e2 not in chart.data.nodes)
+                    if (isInArray(chart.data.nodes, e2)=='no_exist'){
+                          chart.data.nodes.push(e2);
+                          }
+                    if (isInArray(chart.data.links, f)=='no_exist'){
+                        chart.data.links.push(f);
+                          }
+                }
+
+                svg.html('')
+                chart.Glink = svg.append("g")
+                    .attr("stroke", 'rgba(0,0,0,0.9)')// 连接线的颜色
+                    .attr("stroke-opacity", 1)
+                    .attr("stroke-width", 2)
+                    .attr("transform", "translate(" + (chart.width / 2) + "," + (chart.height / 2) + ")");
+                chart.Gnode = svg.append("g")
+                    .attr("transform", "translate(" + (chart.width / 2) + "," + (chart.height / 2) + ")");
+                chart.Gtext = svg.append("g")
+                    .attr("transform", "translate(" + (chart.width / 2) + "," + (chart.height / 2) + ")");
+                chart.node_selected = function(id_) {
+                    var svg = d3.select("#svg_"+path_id+"_ball1");
+                    p2, path_data = NS(id_, svg, infor_id, path_id, k_n, p2, path_data)
+                }
+                chart.draw()
+                    // return infor_data
+                // return p2, path_data
+            };
+                          
+                          
+            {% for path in path_information %} {% with forloop.counter as k %}
+            $("#{{ path.0 }}_{{ k }}").click(function() {
+                $("#{{ path.0 }}_re_{{ k }}").slideToggle();
+            });
+
+            var svg = d3.select("#svg_{{ path.0 }}_ball1");
+            var chart = {
+                svg: svg,
+                width: $("#svg_{{ path.0 }}_ball1").width(),
+                height: $("#svg_{{ path.0 }}_ball1").height(),
+                data: {
+                    nodes: [
+                            { id: "{{path.4}}"},
+                            { id: "{{path.5}}"},
+                    ],
+                    links: [
+                            {"source": "{{path.4}}","target": "{{path.5}}","value": 1},
+                    ]
+                }
+            }
+            chart.Glink = svg.append("g")
+                .attr("stroke", 'rgba(0,0,0,0.5)') // 连接线的颜色
+                .attr("stroke-opacity", 1)
+                .attr("stroke-width", 20)
+                .attr("transform", "translate(" + (chart.width / 2) + "," + (chart.height / 2) + ")");
+            chart.Gnode = svg.append("g")
+                .attr("transform", "translate(" + (chart.width / 2) + "," + (chart.height / 2) + ")");
+            chart.Gtext = svg.append("g")
+                .attr("transform", "translate(" + (chart.width / 2) + "," + (chart.height / 2) + ")");
+
+            chart.node_selected = function(id_) {
+                var svg = d3.select("#svg_{{ path.0 }}_ball1");
+                var infor_id = "{{ path.0 }}_{{ k }}"
+                var path_id = "{{ path.0 }}";
+                var k_n = "{{k}}";
+                var p1 = "{{path.4}}"
+                var p2 = "{{path.5}}"
+
+                var path_data = {
+                        nodes: [
+                                { id: p1 },
+                                { id: p2 },
+                        ],
+                        links: [
+                                {"source": p1,"target": p2,"value": 1},
+                        ]
+                    }
+
+                NS(id_, svg, infor_id, path_id, k_n, p2, path_data)
+                    // var svg = d3.select('#svg_'+path_id+'_ball1');	
+                    // var infor_id = path_id+'_'+k_n;
+                    // NS(id,svg, infor_id, path_id, k_n)
+
+            }
+
+            chart.draw = function() {
+
+                var self = this;
+                var simulation = d3.forceSimulation();
+                var drag = simulation => {
+                    function dragstarted(d) {
+                        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                        d.fx = d.x;
+                        d.fy = d.y;
+                    }
+
+                    function dragged(d) {
+                        d.fx = d3.event.x;
+                        d.fy = d3.event.y;
+                    }
+
+                    function dragended(d) {
+                        if (!d3.event.active) simulation.alphaTarget(0);
+                        d.fx = null;
+                        d.fy = null;
+                    }
+                    return d3.drag()
+                        .on("start", dragstarted)
+                        .on("drag", dragged)
+                        .on("end", dragended);
+                }
+                var data = this.data;
+
+                self.links = data.links.map(d => Object.create(d));
+                self.nodes = data.nodes.map(d => Object.create(d));
+                //var groups = data.nodes.map(function (d) { return d.group; });
+                self.svg.append("defs").selectAll("marker")
+                    .data([2])
+                    .enter()
+                    .append("marker")
+                    .attr("id", function(d) {
+                        return "suit-{{ path.0 }}";
+                    })
+                    .attr("viewBox", "0 -5 10 10")
+                    .attr("refX", 22)
+                    .attr("refY", 0.2)
+                    .attr("markerWidth", 15)
+                    .attr("markerHeight", 15)
+                    .attr("orient", "auto")
+                    .append("path")
+                    .attr("d", "M0,-2L10,0L0,2")
+                    .attr("fill", function(d) {
+                        return  dotColor(d);
+                    });
+                simulation = d3.forceSimulation(self.nodes)
+                    .force("link", d3.forceLink(self.links).id(d => d.id))
+                    .force("charge",
+                        d3.forceManyBody().strength($.config.link.strength))
+                    .force("center", d3.forceCenter(width / 2, height / 2))
+                    .force("x", d3.forceX())
+                    .force("y", d3.forceY());
+                simulation.force("link")
+                    .distance($.config.link.distance);
+                self.link = self.Glink
+                    .selectAll("line")
+                    .data(self.links)
+                    .join("line")
+                    .attr("class", "link")
+                    .attr("stroke-width", 2)
+                    .attr("marker-end", function(d) {
+                        return "url(#suit-{{ path.0 }})";
+                    });
+                self.node = self.Gnode
+                    .selectAll("circle")
+                    .data(self.nodes)
+                    .join("circle")
+                    .attr("class", "node")
+                    .attr("id", function(d) {
+                        return "node-" + d.id;
+                    })
+                    .attr("r", $.config.dotR)
+                    .attr("fill", function(d) {
+                    //    return dotColor(d.id);
+                        return  '#aaaaaa';
+                    })
+	                .style("opacity", 1)//$.config.opacity)
+                    .call(drag(simulation))
+                    .on("click", function(d) {
+                        d3.select("#node-C00099")
+                            .attr("fill","red")
+//                         self.svg.selectAll(".node")// 
+//                             .classed("selected", false);
+//                         self.svg.select("#node-" + d.id)
+//                             .attr("fill",'red')
+//                          .classed("selected", true)
+                            ;
+                        self.node_selected(d.id);
+                    });
+                self.text = self.Gtext
+                    .selectAll("text")
+                    .data(self.nodes)
+                    .join("text")
+                    .style("color", function(d) {
+                        return "#000";
+                    })
+					
+                    .attr("class", "id-text")
+                    .text(d => d.id)
+                    .on("click", function(d) {
+                        self.svg.selectAll(".node")
+                            .classed("selected", false);
+                        self.svg.select("#node-" + d.id)
+                            .classed("selected", true)
+//                             .attr('fill','red');
+                        self.node_selected(d.id);
+                    });
+                simulation.on("tick", () => {
+                    self.link
+                        .attr("x1", d => d.source.x)
+                        .attr("y1", d => d.source.y)
+                        .attr("x2", d => d.target.x)
+                        .attr("y2", d => d.target.y);
+                    self.node
+                        .attr("cx", function(d) {
+                            return d.x;
+                        })
+                        .attr("cy", function(d) {
+                            return d.y;
+                        });
+                    self.text
+                        .attr("x", d => (d.x - (d.id.length * 9.8) / 2))
+                        .attr("y", d => d.y + ($.config.dotR - 20.5) / 2)
+                        .style("opacity", 1)
+                });
+            };
+
+            svgList.push(chart);
+
+            {% endwith %} {% endfor %}
+        });
+        var k_n = 1
+                              
+        $(function() {
+            for (var i in svgList) {
+                svgList[i].draw();
+            }
+        });
+    </script>
+
+
+</head>
+
+<body class="path-result-page-back2">
+    <div class="path-result-text-back">
+<!--     black background -->
+    </div>
+    <div style="background-color: rgba(0, 0, 0, 1); height: 7vh;position: relative;box-shadow:0px 2px 15px 5px rgba(0,0,0,0.75)">
+        <img id="menue_btn" onclick="menue_show()" src="/../media/img/menue.png" alt="123" title="menue" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw">
+        <div id="menue" style=" visibility: hidden;;position: absolute; margin:8vh 0vw 0vh 83vw;background-color: whitesmoke;border:1px solid white;border-radius: 5px;padding: 1vh 1vw 2vh 1vw;color: black ">
+            <ul>
+                <li><a href="/pathlab/">Home</a></li>
+                <li><a href="/pathway/">path_search</a></li>
+                <li><a href="/enzyme/">enzyme_selection</a></li>
+                <li><a href="/parts/">parts_design</a></li>
+            </ul>
+        </div>
+        {% if user.is_active %}
+        <img src="../media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 91vw"> {% else %}
+        <a href="/login/"><img src="/../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"></a>
+        {% endif %}
+        <img src="/../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw">
+        <a href="/logout/"><img src="/../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 95vw"> </a>
+    </div>
+
+<!-- 
+    <div class="home_img">
+        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" width="100%"></a>
+    </div>
+ -->
+
+    <div id="menue_hide" style="text-align:left; width: 82vw; margin-left: 9vw;overflow: hidden;">
+        <br>
+        <br>
+        <div style="width:79vw; text-align: center; border: 2px solid black;border-radius: 10px;background-color: black;color: white; padding: 10px; font-size: 1vw;box-shadow:7px 8px 15px 0px rgba(0,0,0,0.5)">
+            {{ path_information.0.1 }} {% for path in path_information %}
+            <b></b> -> {{ path.2 }} {% endfor %}
+        </div>
+        <!--         {{ compounds_infor }} -->
+
+        <!-- <h3>Selection your enzyme that you need</h3> 
+        <div id="sel_box_report" style="width: 30vw; height: 30vh; border:2px solid cornflowerblue;border-radius: 20px ">
+            
+        </div> -->
+        <h1>Pathway Details</h1>
+        <form action="/Report/" method="POST">
+
+            {% for path in path_information %} {% with forloop.counter as k %}
+            <hr style="height:2px;border:none;border-top:5px dotted lightskyblue; width:79vw">
+
+            <h2>
+                Reaction {{ k }} : <a href="https://www.genome.jp/dbget-bin/www_bget?rn:{{ path.0 }}"> {{ path.0 }}<br></a>
+            </h2>
+
+            <div id="infor_box" style="border-left:3px solid gray; margin-left: 1vw; padding: 0px 0px 0px 10px; ">
+                <b>Compounds ID:</b> <a href="https://www.genome.jp/dbget-bin/www_bget?cpd:{{ path.4 }}">{{ path.4 }}</a> -> <a href="https://www.genome.jp/dbget-bin/www_bget?cpd:{{ path.5 }}">{{ path.5 }}</a>
+                <br>
+                <b>Compounds name:</b> {{ path.1 }} -> {{ path.2 }}
+                <br>
+                <b>Enzyme: </b> <a href="https://www.brenda-enzymes.org/enzyme.php?ecno={{ path.3.0 }}"> {{ path.3.0 }}</a>
+            </div>
+            <br>
+
+            <div style="margin-left: 1vw; background-color: rgba(255,255,255,1); width:50vw;height: 50vh;border-radius: 10px;text-align: center;box-shadow:0px 0px 20px 0px rgba(0,0,0,0.5) inset">
+                <!-- {{ path.1 }} -> {{path.2}}<br>
+                    <div id="{{ path.0 }}_{{ path.1 }}_ball1" > ball</div>-> 
+                    <div id="{{ path.0 }}_{{ path.2 }}_ball2" > ball</div> -->
+                <!-- <b id="{{ path.0 }}_{{ path.1 }}_{{ k }}"> ball </b>  -> <b id="{{ path.0 }}_{{ path.2 }}_{{ k }}">ball</b>  -->
+                <!-- <b id="{{ path.0 }}_{{ k }}_ball1"> {{ path.1 }} </b>  -> <b id="{{ path.0 }}_{{ k }}_ball2">{{ path.2 }}</b>  -->
+                <!-- <b id="{{ path.0 }}_{{ k }}_ball1" style="background-color: antiquewhite;width: 6vw;border: #3489f3 "> ball1 </b>  -> <b id="{{ path.0 }}_{{ k }}_ball2"> ball2 </b>  -->
+                <svg id="svg_{{ path.0 }}_ball1" style="width:50vw;height: 50vh;border-radius:15px;"></svg>
+                <!-- <button type="button" id="{{ path.0 }}_{{ k }}_ball1" class="ball_style"> {{ path.4 }} </button>  ->  -->
+                <!-- <button type="button" id="{{ path.0 }}_{{ k }}_ball2" class="ball_style"> {{ path.5 }} </button>  -->
+
+            </div>
+
+            <br>
+            <div style="margin:-52.4vh 0vw 0vh 56vw; background-color: rgba(255,255,255,1); width:23vw;height: 50vh;border-radius: 10px;position: absolute;  text-align: left;box-shadow:0px 0px 20px 0px rgba(0,0,0,0.5)">
+
+                <div style="margin-left: 2vw; margin-top: 1vh; margin-right: 0vw;">
+                <br>
+                <h3>
+                    <p style="margin:2vh 0vw 2vh 7vw;  display:inline">ID:</p>
+                    <b readonly="readonly" style="height: 10vh" id="{{ path.0 }}_{{ k }}_ID">{{ path.4 }}</b>
+                    </h3>
+                    <p style="margin:2vh 4.7vw 0vh 2vw; display:inline">Name:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_Name">{{ path.6.0 }}</b><br>
+                    
+                    <p style="margin:0vh 2.6vw 0vh 2vw; display:inline">FORMULA:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_FORMULA">{{ path.6.1 }}</b><br>
+                    
+                    
+                    <p style="margin:0vh 1vw 0vh 2vw; display:inline">MOL_WEIGHT:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_MOL_WEIGHT">{{ path.6.2 }}</b><br>
+                    
+                    <p style="margin:0vh 3vw 0vh 2vw; display:inline">EXACT_MASS:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_EXACT_MASS">{{ path.6.3 }}</b><br>
+                    
+                    <p style="margin:0vh 5.5vw 0vh 2vw; display:inline">CAS:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_CAS">{{ path.6.4 }}</b><br>
+                     
+                    <p style="margin:0vh 3vw 0vh 2vw; display:inline">PubChem:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_PubChem">{{ path.6.5 }}</b><br>
+                    
+                    <p style="margin:0vh 3vw 0vh 2vw; display:inline">ChEMBL:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_ChEMBL">{{ path.6.6 }}</b><br>
+                     
+                    <p style="margin:0vh 2.5vw 0vh 2vw; display:inline">PDB-CCD:</p>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_PDB-CCD">{{ path.6.7 }}</b><br>
+                    
+                    <p style="margin:0vh 3vw 0vh 2vw; display:inline">Structure:</p>
+<!--                     <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_REMARK">{{ path.6.8 }}</b><br> -->
+                    <img style="margin-left:5vw;width:10vw" id="{{ path.0 }}_{{ k }}_IMG" src="/../media/img/compound_img/{{ path.4 }}.jpg" alt="123">
+                </div>
+                <br><br><br>
+
+            </div>
+
+
+            <!-- {{ path.3.1 }}<br><br> -->
+            <!-- <div style="width: 10vw;background-color: black;color: aliceblue; border: 2px solid black;border-radius: 10px;text-align: center;" onclick="sel_seq_show()">Selection result</div>  -->
+
+            <div id="{{ path.0 }}_{{ k }}" class="enzyme_selection">Enzyme Selection result</div>
+            <br>
+
+            <div id="{{ path.0 }}_re_{{ k }}" style="display: none">
+                {% with path.3.1 as sel_result %}
+                <table class="custom_tb">
+                    <thread>
+                        <tr>
+                            <th>Organism</th>
+                            <th>KKM Comparison Score</th>
+                            <th>KM Comparison Score</th>
+                            <th>pH Similarity Score</th>
+                            <th>Temperature Similarity Score</th>
+                            <th>CAI Score</th>
+                            <th>Score</th>
+                        </tr>
+                    </thread>
+
+                    {% for i in sel_result %}
+                    <tr>
+                        {% for j in i %}
+                        <td>{{ j }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+
+                    <!-- <tr>
+                            {% for i in sel_result.0 %}
+                                <td>{{ i }}</td>
+                            {% endfor %}
+                        </tr> -->
+                </table>
+                {% endwith %}
+
+                <br><br>
+
+                <!-- {{ path.3.2 }}<br><br> -->
+                {% with path.3.2 as seq %}
+                <table class="custom_tb">
+                    <thread>
+                        <tr>
+                            <th>Select</th>
+                            <th>Organism</th>
+                            <th>Gene id</th>
+                            <th>Sequence</th>
+                            <th>CAI</th>
+                            <th>Codon optimisim</th>
+                        </tr>
+                    </thread>
+
+                    {% for i in seq %}
+                    <tr>
+                        <td><input type="radio" name="{{ path.3.0 }}_{{k}}" value="{{ path.0 }}|{{ path.1 }}|{{path.2}}|{{ i.0 }}" checked="checked"></td>
+                        <!--{{ path.3.0 }} 酶的编号  {{ path.1 }} -> {{path.2}} 反应物名字 {{ path.0 }} 反应编号 -->
+                        <td>{{ i.0 }}</td>
+                        <!--菌种名字-->
+                        <td>{{ i.1 }}</td>
+                        <!-- <td style="overflow: hidden;">{{ i.2 }}</td> -->
+                        <td>
+                            <div style="text-align: center; width: 37vw;padding: 0; overflow: hidden; text-overflow:ellipsis; color:red"><a href="{% url 'full_sequence' i.2 %}"> {{ i.2 }}</a></div>
+                        </td>
+                        <!-- <th style="padding: 0"><b style="text-align: center; width: 30vw;padding: 0; overflow:hidden; color:red"> {{ i.2 }}</b> </th> -->
+                        <!-- {% for j in i %} -->
+                        <!-- <th>{{ j }}</th> -->
+                        <!-- {% endfor %} -->
+                        <td>CAI</td>
+                        <td><a href="{% url 'sequence_validation' i.2 org %}">optimisim</a></td>
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>
+                            {% for i in seq.0 %}
+                            <td>{{ i }}</td>
+                            {% endfor %}
+                        </tr> -->
+                </table>
+                {% endwith %}
+            </div>
+
+            <br><br><br><br> {% endwith %} {% endfor %}
+
+            <br>
+            <!-- {{ enzyme_data }} -->
+
+            <div style="width: 10vw;">
+                <input style="visibility: hidden" type="text" name="enzy" value="{{ enzymes|join:',' }}">
+                <input style="visibility: hidden" type="text" name="org" value="{{ org }}">
+                <input class="report_button" type="submit" value="Give me a report">
+            </div>
+        </form>
+        <br><br><br><br><br><br><br><br><br>
+    </div>
+
+</body>
+
+</html>
+

@@ -1,28 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" content="50000">
     <title>Pathlab</title>
+    
+    <link rel="icon" type="image/x-icon" href="../media/img/menu.png" />
+    
     <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        function ifadvice(){
+            alert('请先登陆');
+            window.location.href="/login/";
+        }
+        // setTimeout(ifadvice(),20);
+    </script>
+    <style>
+        .home-page-back{
+            background-image: url("../media/img/1-01.jpg");
+            background-position: center;
+            /* background-attachment:fixed; */
+            background-size: cover;
+            color: white;
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style-type:none;
+            margin:0;
+            padding:0; 
+            font-size: 14px;
+        }
+        .home_img{
+            /* position: fixed; margin: 80vh 0vw 0vh 47.5vw;  width: 5vw;z-index: 1000; */
+            position: fixed; 
+            margin: 80vh 0vw 0vh 47vw;
+            width: 6vw;
+            z-index: 10000;
+            transition: width 200ms, margin 200ms;
+        }
+        .home_img:hover{
+            width: 7vw;
+            margin: 79.5vh 0vw 0vh 46.5vw; 
+            transition: width 200ms, margin 200ms;
+        }
+        @keyframes fade {
+            from {
+                opacity: 1.0;
+            }
+            50% {
+                opacity: 0.2;
+            }
+            to {
+                opacity: 1.0;
+            }
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: 1.0;
+            }
+            50% {
+                opacity: 0.2;
+            }
+            to {
+                opacity: 1.0;
+            }
+        }
+        .a_style{
+            font-size: 25px;
+            font-family: sans serif;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+            transition: color 500ms, background-color 500ms;
+
+            animation: fade 3000ms infinite;
+            -webkit-animation: fade 3000ms infinite;
+            
+        }
+        .a_style:hover{
+            color: black;
+            background-color: white;
+            cursor:pointer;
+            animation:none;
+            -webkit-animation:none;
+        }
+
+        .a_style2{
+            font-size: 25px;
+            font-family: sans serif;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+        .a_style2:hover{
+            color:lightslategrey;
+
+        }
+    </style>
+    <script>
+        function menue_show(){
+            var menue = document.getElementById('menue')
+            if (menue.style.visibility=="hidden"){
+                menue.style.visibility="unset"
+            }
+            else{
+                menue.style.visibility="hidden"
+            }
+        };
+        function ifadvice(){
+            alert('请先登陆');
+            window.location.href="/login/";
+        }
+        
+    </script>
 </head>
 
-<body style="margin:0;padding:0">
-    <div class="back-home1">
-        <div style="background-color: rgba(0, 0, 0, 0.7);height: 100%; vertical-align: middle;">
-            <div class="text-home1">
-                <h1>Welcome to Pathlab!</h1>
-                <br>
-                <h1> 
-                    <a class="a-style" href="/pathway/">Pathway Search</a> 
-                    |
-                    <a class="a-style" href="/enzyme/">Enzyme Selection</a>
-                    |
-                    <a class="a-style" href="/parts/">Parts Design</a>
-                </h1>
+<body class="home-page-back">
+
+    <!-- <div class="home-text-back"> -->
+    <!-- <ul style="margin-left:150vh;list-style-type: none;">
+      <li> <a href="/login/"> {{ user }}</a></li>
+      <li> <a href="/register/"> register</a></li>
+    </ul>
+    black background -->
+    <!-- </div> -->
+
+
+    <div style="position: absolute; margin: 10vh 0vw 0vh 8vw">
+        <img src="../media/img/software.png" width="60%" alt="123">
+    </div>
+
+    <div style="position: absolute; margin: 23vh 0vw 0vh 8vw">
+        <p style="font-size: 40px;font-weight: 600;font-family: sans serif ">WELCOME TO</p>
+    </div>
+
+    <div style="position: absolute; margin: 38vh 0vw 0vh 8vw">
+        <img src="../media/img/2.png" width="500vw" alt="123">
+    </div>
+
+    <div style="position: absolute; margin: 54vh 0vw 0vh 8vw;">
+        <a id="func1" href="/pathway/" class="a_style">PATHWAY SEARCH</a> | <a id="func" href="/enzyme/" class="a_style">ENZYME SELECTION</a> | <a id="func" href="/parts/" class="a_style">PARTS BROWSER</a>
+    </div>
+
+    
+
+    <div style=" height: 3vh;position: absolute;">
+        <div style="margin: 85vh 0vw -10.5vh 84vw"><img id="menue_btn" onclick="menue_show()" src="../media/img/menue.png" width="13%" alt="123" title="menue" ></div>
+        <div id="menue" style=" visibility: hidden;;position: absolute; margin:-8vh 0vw 0vh 83vw;background-color: whitesmoke;border:1px solid white;border-radius: 5px;padding: 1vh 1vw 2vh 1vw;color: black ">
+            <ul>
+                <li><a href="/pathlab/">Home</a></li>
+                <li><a href="/pathway/">path_search</a></li>
+                <li><a href="/enzyme/">enzyme_selection</a></li>
+                <li><a href="/parts/">parts_design</a></li>
+            </ul>
+        </div>
+
+        {% if user.is_active %}
+            <div style="width: 5vw; margin:6.3vh 0vw -7.7vh 88vw">
+                <img src="../media/img/user.png" alt="123" title="already log in" width="40%" >
             </div>
+        {% else %} 
+            <div style="width: 5vw; margin:6.3vh 0vw -7.7vh 88vw">
+                <a href="/login/">
+                    <img src="../media/img/log_in.png" width="40%"; alt="123" title="log in" >
+                </a> 
+            </div>
+            
+        {% endif %}    
         
-            <a href="/pathlab/"><img src="../media/img/ll.png" alt="logo" style="margin-top: 45%;width: 5%" ></a>
+        <div style="margin:3.6vh 0vw 0vh 92vw">
+            <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out"  width="25%"> </a>
+        </div>
+         
+        
+        <div style="font-family: sans serif;font-style: italic; font-size: 25px; margin:-5vh 0vw 0vh 8vw"> 
+            {% if user.is_active %}
+                <a class="a_style2" href="/advice/">Click to Send Your Advice</a>
+            {% else %}
+                <a class="a_style2" onclick="ifadvice()" >Click to Send Your Advice</a>
+            {% endif %}
         </div>
     </div>
 </body>

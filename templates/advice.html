@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>result</title>
+    <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
+    <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
+    <script src="../media/js/try.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        .enzyme-result-page-back2{
+            background-image: url("../media/img/result_back.png");
+            background-position: center;
+            background-attachment:fixed;
+            background-size: cover;
+            color: black;
+            margin:0;
+            padding:0;
+        }
+        .enzyme-result-text-back{
+            background-color: rgba(255, 255, 255, 1);
+            height: 100%; 
+            width:80vw;
+            margin-left: 10%;
+            z-index:-1;
+            position:fixed;
+            box-shadow: #666 0px 0px 10px;
+            /* border: 1px solid; */
+        }  
+        .enzyme-result-text{
+            position: absolute;
+            /* top: 30%; */
+            /* left: 45%; */
+            width: 75vw;
+            margin-left: -32.5vw;
+            /* margin: -15% 0 0 0%; */
+            vertical-align: middle;
+            text-align:center;
+        }
+        /* .table_class{
+            text-align: center;
+            color:black;
+            border-collapse:separate;
+            width: 80vw;
+            font-size: 1px;
+            box-shadow: 1px 1px 5px #888888;
+        }
+        .table_class td, .table_class th{
+	        font-size:15px;
+	        border:1px solid #888888;
+            padding:3px 7px 2px 7px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        } */
+        .input-submit{ 
+            display: inline-block;
+            padding: 10px;
+            text-transform: uppercase;
+            border: 2px solid #2a2a2a;
+            position: relative;
+            margin-top: 30px;
+            margin-right: 40px;
+            font-weight: 600;
+            color: #222;
+            -webkit-transition: 0.5s ease-in;
+            -moz-transition: 0.5s ease-in;
+            transition: 0.5s ease-in;
+            z-index: 1;
+            overflow: hidden;
+            width: 120px;
+            text-align: center;
+            position:absolute;
+            margin-left: 10vw;
+        }
+        .home_img{
+            /* style="position: fixed; margin: 80vh 0vw 0vh 93vw;  width: 6vw;"  */
+            position: fixed; 
+            margin: 80vh 0vw 0vh 93vw; 
+            width: 6vw;
+            z-index: 10000;
+            transition: width 200ms, margin 200ms;
+        }
+        .home_img:hover{
+            width: 7vw;
+            margin: 79.5vh 0vw 0vh 92.5vw; 
+            transition: width 200ms, margin 200ms;
+        }
+        .input-text_advice{ 
+            border: 2px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            width: 60vw;
+            height:30vh;
+         }}
+
+    </style>
+    
+    <script>
+        function menue_show(){
+            var menue = document.getElementById('menue')
+            if (menue.style.visibility=="hidden"){
+                menue.style.visibility="unset"
+            }
+            else{
+                menue.style.visibility="hidden"
+            }
+        };
+        function goToTop() {
+            location.href = "#top";
+        }
+
+        function goSele() {
+            document.querySelector("#Selection_Result").scrollIntoView();
+        };
+        function goHomo() {
+            document.querySelector("#Homo_Sequence").scrollIntoView(); 
+        };
+        function goInfo() {
+            document.querySelector("#enzyme_information").scrollIntoView(); 
+        };
+        $(function(){
+            if( {{ flag }} === 1){
+             alert("thanks for your advice!")
+             }
+             
+        })
+    </script>
+</head>
+
+<body class="enzyme-result-page-back2" >
+    <!-- <div class="enzyme-result-text-back">
+    black background
+    </div> -->
+    <div style="background-color: rgba(0, 0, 0, 1); height: 7vh;position: relative">
+        <img id="menue_btn" onclick="menue_show()" src="../media/img/menue.png" alt="123" title="menue" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw">
+        <div id="menue" style=" visibility: hidden;;position: absolute; margin:8vh 0vw 0vh 86vw;background-color: whitesmoke;border:1px solid white;border-radius: 5px;padding: 1vh 1vw 2vh 1vw;color: black;z-index: 1000;">
+            <ul>
+                <li><a href="/pathlab/">Home</a></li>
+                <li><a href="/pathway/">path_search</a></li>
+                <li><a href="/enzyme/">enzyme_selection</a></li>
+                <li><a href="/parts/">parts_design</a></li>
+            </ul>
+        </div>
+        {% if user.is_active %}
+            <img src="/media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 91vw" >
+        {% else %}            
+            <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"></a> 
+                <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
+        {% endif %}    
+        <a href="/pathlab/"><img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw" ></a>
+        <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" onclick="/logout/" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 95vw" > </a> 
+    </div>
+
+<!-- 
+    <div  class="home_img">
+        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" style="width: 100%"></a>
+    </div>
+ -->
+
+    <div style="margin:0vh 0vw 0vh 20vw">
+        <form enctype="multipart/form-data" action="/guest_advice/" method="POST" >
+            <h2 style="text-align: left">
+            <br><br>
+            <b style="padding:10px 15px 15px 0px;">Advice:</b> 
+            <br>
+            <textarea class="input-text_advice" type="text"  name="advice"> </textarea><br>
+            </h2>
+            <div style="text-align: center">
+                <input class="input-submit" type="submit"  value="Submit">
+            </div>          
+        </form>
+    </div>
+
+</body>
+</html>

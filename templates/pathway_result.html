@@ -1,26 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>pathway result</title>
     <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
 
+    <style>
+        .path-result-page-back2 {
+            /* background-image: url("../img/back1.jpg"); */
+            background-image: url("../media/img/result_back.png");
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .path-result-text2 {
+            position: absolute;
+            width: 80vw;
+            margin-left: 10vw;
+            /* margin: -10% 0 0 0%; */
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .table {
+            border-collapse: collapse;
+            text-align: right;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 18px;
+            overflow: hidden;
+            color:white;
+        }
+        
+        .table th,
+        .table td {
+/*             border: 1px solid black; */
+            height: 30px;
+            padding: 15px;
+/*             background-color: rgba(255,255,255,0); */
+/*             border: 5px solid black; */
+            /* color:white; */
+            color: white;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        a:link {
+            text-decoration: none;
+        }
+        
+        a {
+            color:white;
+        }
+        
+        a:hover {
+            color: #000000;
+        }
+        
+        a:active {
+            color: #000000;
+        }
+        
+        .result_box {
+            text-align: center;
+/*             border: 3px solid slategray; */
+/*             color: black; */
+            border-radius: 10px;
+            background-color: rgba(255,255,255,0.8);
+            color:black;
+            width: 80vw;
+            margin-left: 0vw;
+            padding: 1vh 1vw 1vh 1vw;
+            font-size: 15px;
+            font-weight: 500;
+            transition: width 200ms, font-size 200ms, margin-left 200ms, padding 200ms;
+            box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);
+        }
+        
+        .result_box:hover {
+            width: 75vw;
+            /* font-size: 17px; */
+            margin-left: 2.5vw;
+            /* padding: 0.7vh 1vw 0.7vh 1vw; */
+        }
+        
+        .home_img {
+            /* style="position: fixed; margin: 80vh 0vw 0vh 93vw;  width: 6vw"  */
+            position: fixed;
+            margin: 80vh 0vw 0vh 93vw;
+            width: 6vw;
+            z-index: 10000;
+            transition: width 200ms, margin 200ms;
+        }
+        
+        .home_img:hover {
+            width: 7vw;
+            margin: 79.5vh 0vw 0vh 92.5vw;
+            transition: width 200ms, margin 200ms;
+        }
+    </style>
+
+    <script>
+        function menue_show() {
+            var menue = document.getElementById('menue')
+            if (menue.style.visibility == "hidden") {
+                menue.style.visibility = "unset"
+            } else {
+                menue.style.visibility = "hidden"
+            }
+        };
+        $(function() {
+            $("#menue_hide").on("click", function() {
+                var menue = document.getElementById('menue')
+                menue.style.visibility = "hidden"
+            })
+        });
+    </script>
 </head>
 
-<body style="padding: 0%;margin: 0%">
-    <div class="back-pathway-result">
-        <div style="background-color: rgba(0, 0, 0, 0.7);height: 100%; vertical-align: middle;">
-            <div class="text-pathway-result">
-                <h2 style="text-align: left">
-                    {{result}}
-                </h2>
+<body class="path-result-page-back2">
+
+    <!-- <div class="path-result-text-back">
+    black background
+    </div> -->
+    <div style="background-color: rgba(0, 0, 0, 1); height: 7vh;position: relative; box-shadow:1px 2px 15px 5px rgba(0,0,0,0.75)">
+        <img id="menue_btn" onclick="menue_show()" src="../media/img/menue.png" alt="123" title="menue" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw">
+        <div id="menue" style=" visibility: hidden;;position: absolute; margin:8vh 0vw 0vh 83vw;background-color: whitesmoke;border:1px solid white;border-radius: 5px;padding: 1vh 1vw 2vh 1vw;color: black ">
+            <ul>
+                <li><a href="/pathlab/">Home</a></li>
+                <li><a href="/pathway/">path_search</a></li>
+                <li><a href="/enzyme/">enzyme_selection</a></li>
+                <li><a href="/parts/">parts_design</a></li>
+            </ul>
+        </div>
+        {% if user.is_active %}
+        <img src="/media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 91vw"> {% else %}
+        <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"></a>
+        <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
+        {% endif %}
+        <img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw">
+        <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 95vw"> </a>
+    </div>
+
+<!-- 
+    <div class="home_img">
+        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" width="100%"></a>
+    </div>
+ -->
+
+    <div style="text-align:center" id="menue_hide">
+        <div class="path-result-text2">
+            <div style="text-align: left;margin-top: 5vh" id="Search_result">
+                
+
+                <h1> Search Result</h1>
+                <div>
+                    <table>
+                        <tr>
+                            <td style="width: 55vw; text-align: center">
+                                <div style="background-color: black; color:white; border-radius: 20px;width: 20vw; margin-left: 20vw; box-shadow:0px 0px 15px 5px rgba(0,0,0,0.2);">
+                                    <h3>· Possible Pathways ·</h3>
+                                </div>
+                            </td>
+
+                            <td style="width: 15vw;text-align: center;">
+                                <div style="background-color: black; color:white; border-radius: 20px;width: 17vw; margin-left: 0vw;box-shadow:0px 0px 15px 5px rgba(0,0,0,0.2)">
+                                    <h3>· Ranking Score ·</h3>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                {% for i in result %} {% with cID=i.0|join:"->" %} {% with compound=i.1|join:"," %} {% with reaction=i.2 %} {% with i.3|join:","|add:"|"|add:org as enzyme %}
+                <a href="{% url 'pathway_information' cID compound reaction|join:',' enzyme %}">
+                    <div class="result_box">
+                        <table>
+                            <tr">
+                                <td style="width: 57vw">{{ cID }}</td>
+                                <td style="width: 10vw;">{{ i.4 }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </a>
+                <br> {% endwith %} {% endwith %} {% endwith %} {% endwith %} {% endfor %}
+                <br>
+                <br>
             </div>
-            <a href="/pathlab/"><img src="../media/img/ll.png" alt="logo" style="margin-top: 45%;margin-left: 80%; width: 5%" ></a>
+
+            <div style="text-align: left;margin-top: 5vh" id="wordcloud">
+                <h1>Wordcloud about the compound</h1>
+                <img src="../media/img/wordcloud/{{compounds1}}.png" alt="Sorry about that there is no relative wordcloud." style="width: 20%;margin-left: 30vw">
+            </div>
         </div>
     </div>
 </body>
+
 </html>
-
-
-

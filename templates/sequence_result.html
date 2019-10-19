@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sequence</title>
+    <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
+    <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
+    <style>
+        table{
+            /*border-collapse: collapse;*/
+            border-spacing:0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #444;
+        }
+        .custom_tb tr:hover{
+            background-color: #fbf8e9;
+            transition: all 0.1s ease-in-out;
+        }
+        .custom_tb th,.custom_tb td{
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .custom_tb th{
+            background-color: #dce9f9;
+            border-top:none;
+        }
+        .custom_tb td:first-child,.custom_tb th:first-child{
+            border-left: none;
+        }
+        .custom_tb th:first-child{
+            border-radius: 6px 0 0 0;
+        }
+        .custom_tb th:last-child{
+            border-radius: 0 6px 0 0;
+        }
+        .custom_tb tr:last-child td:first-child{
+            border-radius: 0 0 0 6px;
+        }
+        .custom_tb tr:last-child td:last-child{
+            border-radius: 0 0 6px 0;
+        }
+        .custom_tb{
+            width: 80vw;
+            margin: 50px auto;
+            border:1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 1px 1px #ccc;
+        }
+    </style>
+
+</head>
+
+<body class="parts-result-page-back">
+    <div class="parts-result-text-back">
+    <!--black background-->
+    </div>
+    <div style="text-align:center"> 
+        <div class="parts-result-text">
+            <h2 style="text-align: left">
+            <br>
+                {% for i in result %}
+                    <hr>
+                    {{i.1}}
+                    <br>
+                	{% for org,seq_info in i.0.items %}
+                	    <p> {{ org }} </p>
+                	    
+                        <table class="custom_tb">
+                            <thread>
+                              <tr>
+                               <th>organism</th>
+                               <th>gene_id</th>
+                              </tr>
+                            </thread>
+                	    {% for k in seq_info %}
+                	        <tr>
+                	           <th>{{ k.0 }}</th>
+                	           <th> 
+                	                {% with k.1 as ID1 %}
+                	                 <form enctype="multipart/form-data" action="/sequence_download/" method="POST" >
+                   				         <input style=" border: none;padding: 5px 3px;padding-left: 0%;display: none;visibility: hidden" type="text" name="seq" value={{ k.2 }}>
+                   				         <input style=" border: none;padding: 5px 3px;padding-left: 0%;display: none;visibility: hidden" type="text" name="gene_id" value={{ k.1 }}>
+       			   				         <input style=" border: none;padding: 5px 3px;padding-left: 0%;display: none;visibility: hidden" type="submit" id={{ ID1 }}>
+                    			         <label for={{ ID1 }}> 
+                    			             <a> {{ k.1 }} </a>
+                    			         </label>
+                    			        (after optimization）
+            				         </form>
+            				         {% endwith %}
+                	           </th>
+                	        </tr>
+                	    {% endfor %}
+                	    </table>
+                	{% endfor %}
+                	<br><br><br>
+                	
+                {% endfor %}
+            </table>
+                <br><br><br>
+            </h2>
+        </div>
+        <a href="/pathlab/"><img src="../media/img/ll.png" alt="logo" style="margin-top: 45%;margin-left: 80%; width: 5%" ></a>
+    </div>
+</body>
+</html>
+
+
+

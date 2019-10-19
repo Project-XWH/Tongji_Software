@@ -1,34 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Enzyme</title>
     <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" media="screen" href="../media/bootstrap//css/bootstrap.css">
+    <script src="../media/js/jquery.js"></script>
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        .enzyme-page-back {
+            background-image: url("../media/img/2-03-01.png");
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-size: 62.5%;
+        }
+        
+        .enzyme-text-back {
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 100vh;
+            width: 100%;
+            z-index: 10;
+            position: fixed;
+        }
+        
+        .enzyme-text2 {
+            position: fixed;
+            /* top: 35vh; */
+            /* left: 40vw; */
+            width: 80vw;
+            height: 100vh;
+            margin: 10vh 0 0 10vw;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .function-box {
+            width: 50vw;
+            height: 45vh;
+            /*   margin:20px 40px 10px; */
+            margin-left: -26vw;
+            padding: 30px 0px 0px 20px;
+            position: absolute;
+            border: 1px solid white;
+            border-radius: 20px;
+            text-align: center;
+            color: dimgray;
+            background-color: rgba(0, 0, 0, 0.5);
+            -webkit-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            vertical-align: text-top;
+            display: inline-block;
+            box-shadow: 1000 1000 100px black;
+            z-index: -10000;
+        }
+        
+        .function-box:hover {
+            -webkit-box-shadow: 0 0 35px rgba(0, 0, 0, .06);
+            box-shadow: 0 100 350px rgba(0, 0, 0, .06);
+            border-color: #4286f4;
+            position: absolute;
+        }
+        
+        .intro {
+            margin: 0vh 0vw 0vh 0vw;
+            position: absolute absolute;
+        }
+        
+        .func-class {
+            margin: -10vh 10vw 0vh -20vw;
+            position: absolute absolute;
+        }
+        
+        .input-text {
+            border: 2px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            width: 15vw;
+            height: 4vh;
+            margin-right: 1vw;
+            font-size: 15px;
+            color: black;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        #mytitle {
+            z-index: 999;
+            position: absolute;
+            color: #ffffff;
+            max-width: 160px;
+            font-size: 16px;
+            padding: 4px;
+            background: rgba(40, 40, 40, 0.8);
+            border: solid 1px #e9f7f6;
+            border-radius: 5px;
+        }
+        
+        .home_img {
+            /* style="position: fixed; margin: 85vh 0vw 0vh 92vw;  width: 5vw; z-index: 1000;" */
+            position: fixed;
+            margin: 80vh 0vw 0vh 92vw;
+            width: 6vw;
+            z-index: 10000;
+            transition: width 200ms, margin 200ms;
+        }
+        
+        .home_img:hover {
+            width: 7vw;
+            margin: 79.5vh 0vw 0vh 91.5vw;
+            transition: width 200ms, margin 200ms;
+        }
+    </style>
+    <script>
+        function showfunc() {
+            var box_height = document.getElementById('func_box');
+            var func = document.getElementById('func-info');
+            var intro = document.getElementById('intro-info');
+            var func_visi = func.style.visibility;
+            var intro_visi = intro.style.visibility
+            if (func_visi == "hidden") {
+                func.style.visibility = "unset";
+                box_height.style.height = "30vh";
+                // intro.style.visibility = "hidden"
+            } else {
+                func.style.visibility = "hidden";
+                intro.style.visibility = "unset";
+                box_height.style.height = "40vh";
+            }
+        };
+
+        function menue_show() {
+            var menue = document.getElementById('menue')
+            if (menue.style.visibility == "hidden") {
+                menue.style.visibility = "unset"
+            } else {
+                menue.style.visibility = "hidden"
+            }
+        };
+
+        function openme() {
+            document.getElementById('login_div1').style.display = 'block';
+            document.getElementById('login_div2').style.display = 'block';
+        }
+
+        function closeme() {
+            document.getElementById('login_div1').style.display = 'none';
+            document.getElementById('login_div2').style.display = 'none';
+        }
+
+        function logo_in() {
+            alert();
+            closeme();
+        }
+
+        $(function() {
+            $("#intro").on("click", function() {
+                $("#func-info").hide();
+                // $("#func-info").slideDown(500) ; //滑动消失
+                $("#intro-info").slideDown(500);
+                // $("#intro-info").show();
+            });   
+            $("#func").on("click", function() {
+                $("#func-info").show();
+                $("#intro-info").slideUp(500); //滑动显现
+                // $("#func-info").slideUp(500)
+                // $("#intro-info").hide();
+            });
+            $("#menue_hide").on("click", function() {
+                var menue = document.getElementById('menue')
+                menue.style.visibility = "hidden"
+            })
+        });
+
+        $(function() {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('span.mytooltip').mouseover(function(e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function() {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function(e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+        $(function() {
+            $("#tags").autocomplete({
+                //     source: function( request, response ) {
+                //         response(['测试返回值，将出现在下拉菜单中','ajshdgfd','sdjkfhg'])
+                //    }});
+                // })
+                source: function(request, response) {
+                    // response([request.term]);
+                    var data1 = {
+                        'term': request.term
+                    };
+                    var value_data = null;
+
+                    function find_name() {
+                        $.ajax({
+                            url: '/complete/',
+                            data: data1,
+                            async: false,
+                            success: function(data) {
+                                yitouNum = data.split('*');
+                            }
+                        });
+                        return yitouNum;
+                    }
+                    
+                    
+                    var value_data = String(find_name()).split(',')
+                    var result = []
+
+                    for (i = 0; i < value_data.length; i++) {
+                        result.push(value_data[i].replace('<', ','))
+                    }
+                    response(result);
+                }
+            })
+        });
+
+        function check_ec(value) {
+            var val = value
+            var pattern = '/[a-z]*{1,}/'
+            if (/^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$/g.test(val) == false) {
+                alert('Please input the right EC number!')
+            }
+        }
+    </script>
 </head>
 
-<body style="margin:0;padding:0">
-    <div class="back-enzyme1">
-        <div style="background-color: rgba(0, 0, 0, 0.7);height: 100%; vertical-align: middle;">
-            <div class="text-enzyme">
-                <h1>Enzyme Selection</h1> 
+<body class="enzyme-page-back">
+    <!-- <div style="     background-color: rgba(0, 0, 0, 0.6);height: 100%;width:100%;z-index:-1;position:fixed;"></div> -->
+
+    <div style="margin-left: 4vw;margin-top: 2vh">
+        <img id="menue_btn" onclick="menue_show()" src="../media/img/menue.png" alt="123" title="menue" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 83vw">
+        <div id="menue" style="visibility: hidden;position: absolute; margin:8vh 0vw 0vh 83vw;background-color: whitesmoke;border:1px solid white;border-radius: 5px;padding: 1vh 1vw 2vh 1vw;color: black ">
+            <ul>
+                <li><a href="/pathlab/">Home</a></li>
+                <li><a href="/pathway/">path_search</a></li>
+                <li><a href="/enzyme/">enzyme_selection</a></li>
+                <li><a href="/parts/">parts_design</a></li>
+            </ul>
+        </div>
+        {% if user.is_active %}
+        <img src="../media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 87vw"> {% else %}
+        <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"></a>
+        <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
+        {% endif %}
+        <a href="/pathlab/"><img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 0vw"></a>
+        <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"> </a>
+    </div>
+
+    <!-- <div class="home_img">
+        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" width="100%"></a>
+    </div> -->
+
+    <div id="menue_hide" style="text-align:center;overflow: hidden;width: 100vw;">
+        <div class="enzyme-text2">
+            <!-- <h1>Enzyme Selection</h1> -->
+            <!-- <hr style="width: 25vw;border: 0; border-bottom: 2px solid white"> -->
+            <!-- <br><br> -->
+
+            <div id="intro-info" style="text-align:left;width: 80vw;padding: 0vh 5vw 0vh 5vw">
+                <h4 style="line-height:1.5">
+                    <b style="font-size: 30px">Enzyme Selection</b> A certain enzyme can be existed in different species, and although they share the same function, their sequences and properties are not exactly the same. In this page, you are able to
+                    select an enzyme which fits your engineering bacterium more. By concerning the physical and chemical properties and kinetic parameters of each enzyme, and we will give the result including all these basic information and the scores
+                    they have. The parameters needed are listed as below, and if you have any questions about the parameters, you can drag your mouse to the question mark following, and it will give you instructions about the parameters you should key
+                    in.
+                </h4>
                 <br>
-                <form enctype="multipart/form-data" action="/enzyme_result/" method="POST" >
-                    <h2 style="text-align: left">
-                        EC number: <input class="input-text" type="text" placeholder="1.1.1.1" name="EC">
-                        <br><br>
-                        Substrate:&nbsp;&nbsp; <input class="input-text" type="text" placeholder="E.coli" name="substrate">
-                        <br>
-                    </h2>
-                    <div style="text-align: right">
-                        <input class="input-submit" type="submit"  value="Submit">
-                    </div>          
-                </form>
-         
             </div>
-            <a href="/pathlab/"><img src="../media/img/ll.png" alt="logo" style="margin-top: 45%;margin-left: 80%; width: 5%" ></a>
+
+            <hr>
+            <br><br>
+
+            <div class="function-box">
+            </div>
+
+            <div id="func-info" style="position: absolute;margin: 3vh -10vw  0vh 20vw; background-color: rgba(209, 209, 46, 0);padding:20px 0px 0px 0px;; width: 68vw;height: 60vh; font-size: 20%">
+                <form enctype="multipart/form-data" action="/enzyme_result/" method="POST">
+                    <h5 style="text-align:left; padding:0vh 0vw 0vh 4.5vw ; ">
+                        <div style="width: 30vw;margin:-4vh 0 0vh 0vw; text-align: center; background-color:#2a2b2f; border-radius: 20px;padding: 10px 0 10px 0px">
+                            <h3>Enzyme in Your Pathway</h3>
+                            <hr>
+                            <div style="white-space: nowrap;">
+                                <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">EC Number :</div> <input class="input-text" type="text" placeholder="2.6.1.18" name="EC" onblur="check_ec(this.value)"><span class="mytooltip" title="Please input the ec number of your reaction."><span class="glyphicon glyphicon-question-sign" ></span></span>
+                            </div>
+                            <br><br>
+                            <div style="white-space: nowrap;">
+                                <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Substrate :</div> <input id="tags" class="input-text" type="text" placeholder="beta-Alanine" name="substrate"> <span class="mytooltip" title="Please input your substrate of your reaction."><span class="glyphicon glyphicon-question-sign" ></span></span>
+                            </div>
+                            <br><br>
+                            <div style="white-space: nowrap;">
+                                <div style="text-align:right;padding: 0px 0px 0px 0px;margin: 0 1vw 0 -11vw ; width: 10vw;display: inline-block;">Organism:</div>
+                                <div style="display: inline-block;">
+                                    <select name="org" style="color: black">
+                                        <option value="ecj" selected="selected">E.coli</option>
+                                        <option value="sce">yeast</option>
+                                    </select>
+                                </div>
+                                <span class="mytooltip" title="Please input your target."><span class="glyphicon glyphicon-question-sign"></span></span>
+                            </div>
+                            <br>
+                        </div>
+                    </h5>
+
+                    <div style="text-align: right; margin: -3vh 0vw 0vh 16vw;position:absolute; z-index:10;">
+                        <input class="input-submit" type="submit" value="Submit">
+                    </div>
+                </form>
+
+                <br><br>
+                <!-- <button id="intro" class="func-class" onclick="showfunc()">Introduction</button> -->
+            </div>
         </div>
     </div>
+    <!-- <Footer style="text-align: center;margin:97vh 0vw 0vh 0vw; position: fixed;;background-color: rgba(0, 0,0,0.6); width: 100vw; height: 3vh;">Contact Us</Footer> -->
 </body>
+
 </html>

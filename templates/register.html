@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
+    <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
+    <style>
+        .register-page-back{
+            background-image: url("../media/img/2-03-01.png");
+            background-position: center;
+            background-attachment:fixed;
+            background-size: cover;
+            color: white;
+            margin:0;
+            padding:0;
+            /* font-size: 62.5%; */
+        }
+        .register-text-back{
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 100vh;
+            width:100%;
+            z-index:-10;
+            position:fixed;
+        }
+        .register-text{
+            position: absolute;
+            top: 35%;
+            left: 40%;
+            width: 70%;
+            margin: -15% 0 0 -25%;
+            vertical-align: middle;
+            text-align:center;
+        }
+        .input_style{
+            margin-left: 1vw;
+            border: 2px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            width: 8vw;
+            height:1vh;
+            margin-right: 1vw;
+            font-size: 15px;
+        }
+        a:link {
+            text-decoration: none;
+        }
+	    a{ 
+	        color:dodgerblue; 
+	    }
+        a:hover{ 
+	        color:white;
+	    }
+        a:active{ 
+	        color:#000000;
+        }
+        .confirm_input{
+            background-color: grey;
+            padding: 1vh 1vw 1vh 1vw;
+            width: 10vw;
+            font-size: 1em;
+            outline: none;
+            color: blanchedalmond
+        }
+    </style>
+
+</head>
+
+<body class="register-page-back">
+    <div style="background-color: rgba(0, 0, 0, 0.6);height: 100%;width:100%;z-index:-1;position:fixed;">
+        <!-- black background -->
+    </div>
+
+    <div style="text-align:center;border:  2px solid #ddd;border-radius:10px;background-color: rgba(255,255,255,0.2);width: 30vw;height: 70vh; position: absolute;margin: 10vh 0vw 0vh 35vw; color:antiquewhite"> 
+        <div class="register-text">
+            <h2 style="margin:-5vh 0vw 10vh 0vw">Welcome to register</h2>
+            {{ errors }}      
+            <form action="/Register/" method="post">
+                <h3>
+                    username:<input class="input_style" type="text" id="id_username" name="username" placeholder="username" autofocus required />
+                    <br><br>
+                    password:<input class="input_style" type="password" id="id_password" placeholder="password" name="password" required >
+                    <br>
+                </h3>
+                <br><br><br>
+                <input class="confirm_input" type="submit" value="CONFIRM">
+            </form>
+        </div>  
+    </div>
+    <div style="position: fixed; margin: 80vh 0vw 0vh 92vw;  width: 5vw" >
+        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" width="100%"></a>
+    </div>
+
+</body>
+</html>
+

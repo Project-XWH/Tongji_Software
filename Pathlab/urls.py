@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.views.static import serve
 from django.conf import settings
 # myapp
-from path_search.views import main, pathway, path_search
+from path_search.views import main, pathway,  pathway_information, complete,path_search_full,path_search_one,path_show,compound_info
 from enzyme_selection.views import enzyme, Enzyme_Information
-from parts_design.views import parts, sequence_validation 
+from parts_design.views import parts, sequence_validation, parts_search, show_sequence, sequence_validation_post, full_sequence
+
+from account.views import Defaultlogin, Login, Defaultregister, Register, advice, guest_advice, logout
+from report.views import sequence_download, Report
 
 
 #import os
@@ -32,12 +35,43 @@ urlpatterns = [
         {'document_root': settings.STATIC_ROOT}),
     url(r'^admin/', admin.site.urls),
 
+    url(r'^$', main),
     url(r'^pathlab/$', main),
     url(r'^pathway/$', pathway),
     url(r'^enzyme/$', enzyme),
     url(r'^parts/$', parts),
 
-    url(r'^pathway_result/$', path_search),
+    url(r'^pathway_result_full/$', path_search_full),
+    url(r'^pathway_result_one/$', path_search_one),
+
+    url(r'^pathway_information/(?P<cID>.*)/(?P<compounds>.*)/(?P<reactions>.*)/(?P<enzymes>.*)/$', pathway_information, name="pathway_information"),
     url(r'^enzyme_result/$',Enzyme_Information),
-    url(r'^parts_result/$',sequence_validation ),
+    url(r'^parts_result/(?P<seq>.*)/(?P<organism>.*)$',sequence_validation, name="sequence_validation"),
+    url(r'^sequence_validation_post/$',sequence_validation_post),
+    url(r'^parts_search/$',parts_search),
+    url(r'^path_show/$',path_show),
+    url(r'^compound_info/$',compound_info),
+    
+
+    url(r'^sequence_result/(?P<infor1>.*)$',show_sequence, name="sequence_result"),
+    url(r'^full_sequence/(?P<seq>.*)$',full_sequence, name="full_sequence"),
+    
+    
+    url(r'^advice/$',advice),
+    url(r'^guest_advice/$', guest_advice),
+    
+    url(r'^login/$', Defaultlogin),
+    url(r'^Login/$', Login),
+    url(r'^register/$', Defaultregister),
+    url(r'^Register/$', Register),
+    url(r'^logout/$', logout),
+    
+    url(r'^complete/$',complete),
+    url(r'^sequence_download/$',sequence_download),
+    # url(r'^Report/(?P<compounds>.*)/(?P<enzymes>.*)/(?P<seq_data>.*)$',Report, name="Report"),
+    url(r'^Report/$',Report),
 ]
+
+
+
+
