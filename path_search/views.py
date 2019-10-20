@@ -65,8 +65,8 @@ def path_search_full(req):
         try:
             if arg6 == 'no':
                 result = search.search(arg1, arg2, arg3, arg4, arg5)
-#             else:
-#                 result = search.novel_search(arg1, arg2, arg3, arg4, arg5)
+            else:
+                result = search.novel_search(arg1, arg2, arg3, arg4, arg5)
             return render(req,'pathway_result.html',
                 {'result':result,'compounds1':arg1,'compounds2':arg2, 'org':org})
         except Exception as err:
@@ -141,12 +141,6 @@ def path_show(req):
         next_compound.append(result[i][0][1])
     
     return HttpResponse(','.join(next_compound))
-    # 
-    # 
-    # if len(result)>0:
-    #     return HttpResponse(','.join(result[1]))
-    # else:
-    #     return HttpResponse()
 
 
 def compound_info(req):
@@ -158,9 +152,6 @@ def compound_info(req):
 
 def pathway_information(req,cID, compounds, reactions, enzymes):
 
-    # EC = req.POST['EC'].split(',')
-    # Substrate = req.POST['compounds'].split(',')
-    # org = req.POST['org']
 
     cID = cID.split('->')
     Compounds = compounds.split(',')

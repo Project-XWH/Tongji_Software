@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>result</title>
     <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="../media/img/menu.png" />
     <script src="../media/js/try.js"></script>
     <style>
-        .enzyme-result-page-back2{
+        .enzyme-result-page-back2 {
             background-image: url("../media/img/result_back.png");
             background-position: center;
-            background-attachment:fixed;
+            background-attachment: fixed;
             background-size: cover;
             color: black;
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
         }
-        .enzyme-result-text-back{
+        
+        .enzyme-result-text-back {
             background-color: rgba(255, 255, 255, 1);
-            height: 100%; 
-            width:80vw;
+            height: 100%;
+            width: 80vw;
             margin-left: 10%;
-            z-index:-1;
-            position:fixed;
+            z-index: -1;
+            position: fixed;
             box-shadow: #666 0px 0px 10px;
             /* border: 1px solid; */
-        }  
-        .enzyme-result-text{
+        }
+        
+        .enzyme-result-text {
             position: absolute;
             /* top: 30%; */
             /* left: 45%; */
@@ -34,113 +38,113 @@
             margin-left: -32.5vw;
             /* margin: -15% 0 0 0%; */
             vertical-align: middle;
-            text-align:center;
-        }
-        /* .table_class{
             text-align: center;
-            color:black;
-            border-collapse:separate;
-            width: 80vw;
-            font-size: 1px;
-            box-shadow: 1px 1px 5px #888888;
         }
-        .table_class td, .table_class th{
-	        font-size:15px;
-	        border:1px solid #888888;
-            padding:3px 7px 2px 7px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        } */
-        table{
+        
+        table {
             /*border-collapse: collapse;*/
-            border-spacing:0;
+            border-spacing: 0;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
             color: #444;
         }
-        .custom_tb tr:hover{
+        
+        .custom_tb tr:hover {
             background-color: #fbf8e9;
             transition: all 0.1s ease-in-out;
         }
-        .custom_tb th,.custom_tb td{
+        
+        .custom_tb th,
+        .custom_tb td {
             border-left: 1px solid #ccc;
             border-top: 1px solid #ccc;
             padding: 10px;
             text-align: left;
         }
-        .custom_tb th{
+        
+        .custom_tb th {
             background-color: #dce9f9;
-            border-top:none;
+            border-top: none;
         }
-        .custom_tb td:first-child,.custom_tb th:first-child{
+        
+        .custom_tb td:first-child,
+        .custom_tb th:first-child {
             border-left: none;
         }
-        .custom_tb th:first-child{
+        
+        .custom_tb th:first-child {
             border-radius: 6px 0 0 0;
         }
-        .custom_tb th:last-child{
+        
+        .custom_tb th:last-child {
             border-radius: 0 6px 0 0;
         }
-        .custom_tb tr:last-child td:first-child{
+        
+        .custom_tb tr:last-child td:first-child {
             border-radius: 0 0 0 6px;
         }
-        .custom_tb tr:last-child td:last-child{
+        
+        .custom_tb tr:last-child td:last-child {
             border-radius: 0 0 6px 0;
         }
-        .custom_tb{
+        
+        .custom_tb {
             width: 80vw;
             margin: 50px auto;
-            border:1px solid #ccc;
+            border: 1px solid #ccc;
             border-radius: 6px;
             box-shadow: 0 1px 1px #ccc;
         }
-        ul{
-            list-style-type:none;
-            margin:0;
-            padding:0; 
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
             font-size: 14px;
         }
+        
         .on_position_button {
             background-color: bisque;
             padding: 1vh 0vw 1vh 0vw;
-            border:1 solid bisque;
+            border: 1 solid bisque;
             border-radius: 20px;
             outline: none;
             width: 10vw;
             text-align: center;
             transition: width 200ms, margin-left 200ms;
         }
-        .on_position_button:hover{
+        
+        .on_position_button:hover {
             width: 11vw;
             margin-left: 0.5vw;
         }
-        .home_img{
+        
+        .home_img {
             /* style="position: fixed; margin: 80vh 0vw 0vh 93vw;  width: 6vw;"  */
-            position: fixed; 
-            margin: 80vh 0vw 0vh 93vw; 
+            position: fixed;
+            margin: 80vh 0vw 0vh 93vw;
             width: 6vw;
             z-index: 10000;
             transition: width 200ms, margin 200ms;
         }
-        .home_img:hover{
+        
+        .home_img:hover {
             width: 7vw;
-            margin: 79.5vh 0vw 0vh 92.5vw; 
+            margin: 79.5vh 0vw 0vh 92.5vw;
             transition: width 200ms, margin 200ms;
         }
-
     </style>
-    
+
     <script>
-        function menue_show(){
+        function menue_show() {
             var menue = document.getElementById('menue')
-            if (menue.style.visibility=="hidden"){
-                menue.style.visibility="unset"
-            }
-            else{
-                menue.style.visibility="hidden"
+            if (menue.style.visibility == "hidden") {
+                menue.style.visibility = "unset"
+            } else {
+                menue.style.visibility = "hidden"
             }
         };
+
         function goToTop() {
             location.href = "#top";
         }
@@ -148,16 +152,22 @@
         function goSele() {
             document.querySelector("#Selection_Result").scrollIntoView();
         };
+
         function goHomo() {
-            document.querySelector("#Homo_Sequence").scrollIntoView(); 
+            document.querySelector("#Homo_Sequence").scrollIntoView();
         };
+
         function goInfo() {
-            document.querySelector("#enzyme_information").scrollIntoView(); 
+            document.querySelector("#enzyme_information").scrollIntoView();
+        };
+
+        function goComment() {
+            document.querySelector("#Comment").scrollIntoView();
         };
     </script>
 </head>
 
-<body class="enzyme-result-page-back2" >
+<body class="enzyme-result-page-back2">
     <!-- <div class="enzyme-result-text-back">
     black background
     </div> -->
@@ -172,16 +182,15 @@
             </ul>
         </div>
         {% if user.is_active %}
-            <img src="/media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 91vw" >
-        {% else %}            
-            <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"></a> 
-                <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
-        {% endif %}    
-         <a href="/pathlab/"><img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw" ></a>
-        <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 95vw" > </a> 
+        <img src="/media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 91vw"> {% else %}
+        <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"></a>
+        <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
+        {% endif %}
+        <a href="/pathlab/"><img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw"></a>
+        <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 95vw"> </a>
     </div>
 
-<!-- 
+    <!-- 
     <div  class="home_img">
         <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" style="width: 100%"></a>
     </div>
@@ -194,94 +203,130 @@
             <li><button class="on_position_button" onclick="goHomo()">Homology Sequence</button></li>
             <br>
             <li><button class="on_position_button" onclick="goInfo()">Enzyme Information</button></li>
+            <br>
+            <li><button class="on_position_button" onclick="goComment()">Comment</button></li>
         </ul>
     </div>
 
-    <div id="menue_hide" > 
-        <div class="enzyme-result-text" > 
+    <div id="menue_hide">
+        <div class="enzyme-result-text">
             <div style="text-align: left;margin-top: 5vh" id="Selection_Result">
                 <!-- {{ sel_result }} -->
                 <br>
                 <h1 style="color: royalblue" id="top">Selection Result</h1>
                 {% for re in sel_result %}
                 <!-- <hr> -->
-                <h2>{{ re.0 }}</h2> 
+                <h2>{{ re.0 }}</h2>
                 <table class="custom_tb">
                     <thread>
-                    	<tr>
-                    		<th>Organism</th>
-                    		<th>KKM Comparison Score</th>
-                    		<th>KM Comparison Score</th>
-                    		<th>pH Similarity Score</th>
+                        <tr>
+                            <th>Organism</th>
+                            <th>KKM Comparison Score</th>
+                            <th>KM Comparison Score</th>
+                            <th>pH Similarity Score</th>
                             <th>Temperature Similarity Score</th>
                             <th>CAI Score</th>
                             <th>Score</th>
-                    	</tr>
+                        </tr>
                     </thread>
                     {% for i in re.1 %}
                     <tr>
-            		{% for j in i %}
-                 		<td>{{ j }}</td>
-                	{% endfor %}
-                	</tr>
+                        {% for j in i %}
+                        <td>{{ j }}</td>
+                        {% endfor %}
+                    </tr>
                     {% endfor %}
                 </table>
                 {% endfor %}
                 <br>
             </div>
-            
+
 
             <div style="text-align: left" id="Homo_Sequence">
-            <br>
+                <br>
                 <h1 style="color: royalblue">Homology Sequence</h1>
                 <!-- {{ sequence }} -->
                 {% for re in sequence %}
                 <!-- <hr> -->
-                <h2>{{ re.0 }}</h2> 
+                <h2>{{ re.0 }}</h2>
                 <table class="custom_tb">
                     <thread>
-                    	<tr>
-                    		<th>Organism</th>
-                    		<th>Gene id</th>
+                        <tr>
+                            <th>Organism</th>
+                            <th>Gene id</th>
                             <th>Sequence</th>
                             <th>CAI</th>
                             <th>Codon optimisim</th>
-                    	</tr>
+                        </tr>
                     </thread>
                     {% for i in re.1 %}
-                	<tr>
+                    <tr>
                         <td>{{ i.0 }}</td>
                         <td>{{ i.1 }}</td>
                         {% with i.2 as seq %}
                         <!-- <td style="overflow: hidden;">{{ i.2 }}</td> -->
-                        <td><div style="text-align: center; width: 37vw;padding: 0; overflow: hidden; text-overflow:ellipsis; color:red"> <a href="{% url 'full_sequence' i.2 %}">{{ i.2 }}</a></div></td>
+                        <td>
+                            <div style="text-align: center; width: 37vw;padding: 0; overflow: hidden; text-overflow:ellipsis; color:red"> <a href="{% url 'full_sequence' i.2 %}">{{ i.2 }}</a></div>
+                        </td>
                         <!-- <th style="padding: 0"><b style="text-align: center; width: 30vw;padding: 0; overflow:hidden; color:red"> {{ i.2 }}</b> </th> -->
-                		<!-- {% for j in i %}
+                        <!-- {% for j in i %}
                 		<th>{{ j }}</th>
                         {% endfor %} -->
                         <td>CAI</td>
-                        
+
                         <td><a href="{% url 'sequence_validation' seq org %}">optimisim</a></td>
                         {% endwith %}
-                	</tr>
-                	{% endfor %}
+                    </tr>
+                    {% endfor %}
                 </table>
                 {% endfor %}
             </div>
 
             <div style="text-align: left;" id="enzyme_information">
-            <br>
+                <br>
                 <h1 style="color: royalblue">Enzyme Information</h1>
-                
-                    {% for infor in enzyme_info %}
-                    {% for info in infor %}
-                    <div style="margin-left: 5vw">{{ info }} <br></div>
-                    {% endfor %}
-                    <hr>
-                    {% endfor %}
-                
+
+                {% for infor in enzyme_info %} {% for info in infor %}
+                <div style="margin-left: 5vw">{{ info }} <br></div>
+                {% endfor %}
+                <hr> {% endfor %}
+
+            </div>
+            <br>
+            <div id="Comment" style="text-align: left;">
+                <h1 style="color: royalblue;">Comment</h1>
+                <h3>Add Comment</h3>
+
+                {% if user.is_active %}
+                <form action="/enzyme_comment/" method="post">
+                    <input type="text" style="visibility: hidden;" name="com_enzyme" value="{{ user_enzyme }}">
+                    <textarea name="comment" id="user_comment" style="width: 100%;height: 20vh;box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2) ;"></textarea>
+                    <br><br>
+                    <input class="confirm_input" type="submit" value="SUBMIT">
+                </form>
+                <br><br> {% else %}
+
+                <form action="/Login/" method="post">
+                    <h3>
+                        username:<input class="input_style" type="text" id="id_username" name="username" placeholder="username" autofocus required />
+                        <br><br>password:
+                        <input class="input_style" type="password" id="id_password" placeholder="password" name="password" required>
+                        <br>
+                    </h3>
+                    <input class="confirm_input" type="submit" value="CONFIRM">
+                </form>
+                {% endif %}
+
+                <h3>Comments</h3>
+
+                <div style="margin:0vh 0vw 10vh 0vw; height:20vh; border:1px dashed; padding: 20px;background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2) ;">
+                    {% for comment in comments %} {{ comment.0}} : {{comment.1}}<br> {% endfor %}
+                </div>
             </div>
         </div>
+
     </div>
+
 </body>
+
 </html>

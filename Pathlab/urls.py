@@ -22,7 +22,7 @@ from path_search.views import main, pathway,  pathway_information, complete,path
 from enzyme_selection.views import enzyme, Enzyme_Information
 from parts_design.views import parts, sequence_validation, parts_search, show_sequence, sequence_validation_post, full_sequence
 
-from account.views import Defaultlogin, Login, Defaultregister, Register, advice, guest_advice, logout
+from account.views import Defaultlogin, Login, Defaultregister, Register, advice, guest_advice, logout, enzyme_comment
 from report.views import sequence_download, Report
 
 
@@ -65,6 +65,7 @@ urlpatterns = [
     url(r'^register/$', Defaultregister),
     url(r'^Register/$', Register),
     url(r'^logout/$', logout),
+    url(r'^enzyme_comment/$', enzyme_comment),
     
     url(r'^complete/$',complete),
     url(r'^sequence_download/$',sequence_download),

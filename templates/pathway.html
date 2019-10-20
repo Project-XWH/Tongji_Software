@@ -6,7 +6,7 @@
     <title>Pahtway</title>
     <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
-    <!-- <link href="../media/css/loading.css" rel="stylesheet" type="text/css"> -->
+    <link rel="icon" type="image/x-icon" href="../media/img/menu.png" />
     <link rel="stylesheet" media="screen" href="../media/bootstrap/css/bootstrap.css">
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -314,9 +314,9 @@
                 alert('Please input the right int number!')
                 document.getElementById(ID).value = '1'
             }
-            if (parseInt(val) >= 20) {
+            if (parseInt(val) >= 12) {
                 alert('The search depth is over control, please input again!')
-                document.getElementById(ID).value = '1'
+                document.getElementById(ID).value = '5'
             }
         }
 
@@ -326,9 +326,9 @@
                 alert('Please input the right int number!')
                 document.getElementById(ID).value = '1'
             }
-            if (parseInt(val) >= 2000) {
+            if (parseInt(val) >= 1000) {
                 alert('The needed paths is over control, please input again!')
-                document.getElementById(ID).value = '1'
+                document.getElementById(ID).value = '10'
             }
         }
 
@@ -339,13 +339,19 @@
                 document.getElementById(ID).value = '1'
             }
         }
+        
+        function check_novel_depth(){
+            var val = document.getElementById('Search_Depth').value
+            if (parseInt(val) >= 6) {
+                alert('The search depth is over control, please input again!')
+                document.getElementById('no_novel').checked = 'checked'
+            }
+        }
+
     </script>
 </head>
 
 <body class="path-text-back2">
-    <!-- <div style="background-color: rgba(0, 0, 0, 0.6);height: 100%;width:100%;z-index:-1;position:fixed;">
-       
-    </div> -->
 
     <div style="margin-left: 4vw;margin-top: 2vh">
         <img id="menue_btn" onclick="menue_show()" src="../media/img/menue.png" alt="123" title="menue" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 83vw">
@@ -360,15 +366,11 @@
         {% if user.is_active %}
         <img src="../media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 87vw"> {% else %}
         <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"></a>
-        <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
+       
         {% endif %}
         <a href="/pathlab/"><img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 0vw"></a>
         <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"> </a>
     </div>
-
-    <!-- <div class="home_button">
-        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" width="100%"></a>
-    </div> -->
 
     <div id="menue_hide" style="text-align:center;color:white;width:100vw;">
         <div class="path-text2">
@@ -405,26 +407,26 @@
                                 <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Start Compound:</div>
                                 <div style="display: inline-block;"> <input id="tags" class="input-text" type="text" placeholder="beta-alanine | C00099"  name="start_compound"></div> <span class="mytooltip" title="Please input your initial compound."><span class="glyphicon glyphicon-question-sign"></span></span>
                             </div>
-                            <br><br>
+                            <br>
                             <div style="white-space: nowrap;">
                                 <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Target Compound:</div>
                                 <div style="display: inline-block;"> <input id="tags1" class="input-text" type="text" placeholder="udp-n-acetylglucosamine | C00043" name="target_compound"></div> <span class="mytooltip" title="Please input your target compound."><span class="glyphicon glyphicon-question-sign"></span></span>
                             </div>
-                            <br><br>
+                            <br>
                             <div style="white-space: nowrap;">
                                 <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Search Depth:</div>
                                 <div style="display: inline-block;"> <input class="input-text" type="text" placeholder="5" name="Search_Depth" id="Search_Depth" onblur="check_depth('Search_Depth')"></div> <span class="mytooltip" title="Design your target pathways' depth."><span class="glyphicon glyphicon-question-sign"></span></span>
                             </div>
-                            <br><br>
+                            <br>
                             <div style="white-space: nowrap;">
                                 <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Needed Paths:</div>
                                 <div style="display: inline-block;"> <input class="input-text" type="text" placeholder="15" name="Needed_Paths" id="Needed_Paths" onblur="check_paths('Needed_Paths')"></div> <span class="mytooltip" title="Please input the number of paths you want."><span class="glyphicon glyphicon-question-sign"></span></span>
                             </div>
-                            <br><br>
-                            <div style="white-space: nowrap;margin:0vh 9.6vw 0vh 0vw">
+                            <br>
+                            <div style="white-space: nowrap;margin:0vh 9vw 0vh 0vw">
                                 <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Novel reaction:</div>
-                                <div style="display: inline-block;"> <input style="margin:0vh 0vw 0vh 1vw" type="radio" name="novel" value="yes">yes</div> 
-                                <div style="display: inline-block;"> <input style="margin:0vh 0vw 0vh 1vw" type="radio" name="novel" value="no" checked="checked">no</div> <span class="mytooltip" title="Do you want to consider the novel reaction into the alognism."><span class="glyphicon glyphicon-question-sign"></span></span>
+                                <div style="display: inline-block;"> <input style="margin:0vh 0vw 0vh 1vw" type="radio" name="novel" id="novel_reaction" value="yes" onclick="check_novel_depth()"> yes</div> 
+                                <div style="display: inline-block;"> <input style="margin:0vh 0vw 0vh 1vw" type="radio" name="novel" value="no" id="no_novel" checked="checked"> no</div> <span class="mytooltip" title="Do you want to consider the novel reaction into the alognism."><span class="glyphicon glyphicon-question-sign"></span></span>
                             </div>
                             <br>
                             <div style="white-space: nowrap;">
@@ -489,7 +491,7 @@
 
                             <div style="white-space: nowrap;margin-top: 0vh">
                                 <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Needed Paths:</div>
-                                <div style="display: inline-block;"> <input class="input-text" type="text" value="5" name="Needed_Paths" id="Needed_Paths" onblur="check_paths('Needed_Paths')"></div> <span class="mytooltip" title="Please input the number of paths you want."><span class="glyphicon glyphicon-question-sign"></span></span>
+                                <div style="display: inline-block;"> <input class="input-text" type="text" value="5" name="Needed_Paths" id="Needed_Paths2" onblur="check_paths('Needed_Paths2')"></div> <span class="mytooltip" title="Please input the number of paths you want."><span class="glyphicon glyphicon-question-sign"></span></span>
                             </div>
                             <br><br>
                             <!-- <div style="white-space: nowrap;visibility: hidden; margin-bottom: -6vh"><div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Search Depth:</div>  <div style="display: inline-block;"> <input  class="input-text" type="text" value="9" name="Search_Depth"></div> <span class="mytooltip" title="Please input your target."><span class="glyphicon glyphicon-question-sign"></span></span></div>  -->
@@ -504,7 +506,7 @@
                                 </div>
                                 <span class="mytooltip" title="For the one diraction pathway search, your should select one diraction."><span class="glyphicon glyphicon-question-sign"></span></span>
                             </div>
-                            <br><br>
+                            <br>
 
                             <div style="white-space: nowrap;">
                                 <div style="text-align:right;padding: 0px 0px 0px 0px;margin: 0 1vw 0 -11vw ; width: 10vw;display: inline-block;">Organism:</div>

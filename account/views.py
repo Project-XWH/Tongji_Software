@@ -80,4 +80,17 @@ def guest_advice(req):
     return render(req, 'advice.html', {"flag":"1"})
 #     return render(req,'guest_advice.html',
 #                                {'time':ticks})
-                               
+
+
+def enzyme_comment(req):
+    comment_enzyme = req.POST["com_enzyme"]
+    comment = req.POST['comment']
+
+    ticks = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+
+    comment_f = open(path+'/../data/enzyme_selection/enzyme_comments.txt','a')
+    comment_f.write(str(comment_enzyme) + '\t' + ticks + '\t' + comment + '\n')
+    comment_f.close()
+
+    return render(req, 'pathlab.html')
+

@@ -6,6 +6,7 @@
     <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
     <script src="../media/js/try.js"></script>
+    <link rel="icon" type="image/x-icon" href="../media/img/menu.png" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <style>
         .enzyme-result-page-back2{
@@ -37,22 +38,6 @@
             vertical-align: middle;
             text-align:center;
         }
-        /* .table_class{
-            text-align: center;
-            color:black;
-            border-collapse:separate;
-            width: 80vw;
-            font-size: 1px;
-            box-shadow: 1px 1px 5px #888888;
-        }
-        .table_class td, .table_class th{
-	        font-size:15px;
-	        border:1px solid #888888;
-            padding:3px 7px 2px 7px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        } */
         .input-submit{ 
             display: inline-block;
             padding: 10px;
@@ -129,9 +114,6 @@
 </head>
 
 <body class="enzyme-result-page-back2" >
-    <!-- <div class="enzyme-result-text-back">
-    black background
-    </div> -->
     <div style="background-color: rgba(0, 0, 0, 1); height: 7vh;position: relative">
         <img id="menue_btn" onclick="menue_show()" src="../media/img/menue.png" alt="123" title="menue" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw">
         <div id="menue" style=" visibility: hidden;;position: absolute; margin:8vh 0vw 0vh 86vw;background-color: whitesmoke;border:1px solid white;border-radius: 5px;padding: 1vh 1vw 2vh 1vw;color: black;z-index: 1000;">
@@ -146,17 +128,12 @@
             <img src="/media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 91vw" >
         {% else %}            
             <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"></a> 
-                <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
+                
         {% endif %}    
         <a href="/pathlab/"><img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw" ></a>
         <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" onclick="/logout/" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 95vw" > </a> 
     </div>
 
-<!-- 
-    <div  class="home_img">
-        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" style="width: 100%"></a>
-    </div>
- -->
 
     <div style="margin:0vh 0vw 0vh 20vw">
         <form enctype="multipart/form-data" action="/guest_advice/" method="POST" >

@@ -6,6 +6,7 @@
     <title>Parts</title>
     <link href="../media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="../media/css/alink.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="../media/img/menu.png" />
     <link rel="stylesheet" media="screen" href="../media/bootstrap//css/bootstrap.css">
     <script src="../media/js/jquery.js"></script>
     <style>
@@ -340,8 +341,6 @@
 </head>
 
 <body class="enzyme-page-back">
-    <!-- <div style="     background-color: rgba(0, 0, 0, 0.6);height: 100%;width:100%;z-index:-1;position:fixed;"></div> -->
-
     <div style="margin-left: 4vw;margin-top: 3vh">
         <img id="menue_btn" onclick="menue_show()" src="../media/img/menue.png" alt="123" title="menue" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 83vw">
         <div id="menue" style="visibility: hidden;position: absolute; margin:8vh 0vw 0vh 83vw;background-color: whitesmoke;border:1px solid white;border-radius: 5px;padding: 1vh 1vw 2vh 1vw;color: black ">
@@ -355,16 +354,13 @@
         {% if user.is_active %}
         <img src="../media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 87vw"> {% else %}
         <a href="/login/"><img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"></a>
-        <!-- <img src="../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 87vw"> -->
+        
         {% endif %}
 
-        <!-- <img src="../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 0vw"> -->
+        
         <a href="/logout/"><img src="../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"> </a>
     </div>
 
-    <!-- <div style="position: fixed; margin: 85vh 0vw 0vh 92vw;  width: 5vw; z-index: 100000;" >
-        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" width="100%"></a>
-    </div> -->
 
     <div class="home_img">
         <a href="/pathlab/"><img src="/../media/img/pathlab2.png" alt="logo" width="100%"></a>
@@ -393,13 +389,11 @@
                     <button class="sel_step_button" onclick="search()">Parts Browser</button>
                     <br>
                     <br>
-<!--                     <button class="sel_step_button" onclick="validation()">Sequence Validation</button> -->
-                    <!-- <button class="sel_step_button" onclick="two_show()">Two Step Reaction</button> -->
                 </div>
 
                 <div id="func-info" style="position: absolute;margin: 5vh 0vw  0vh -3vw; background-color: rgba(209, 209, 46, 0);padding:20px 0px 0px 0px;; width: 68vw;height: 60vh; font-size: 20%">
                     <form id="parts_search" style="position:absolute;visibility:unset;" enctype="multipart/form-data" action="/parts_search/" method="POST">
-                        <!-- action="/parts_result/" -->
+                    
                         <div style="width: 30vw;margin:-4vh 0 0vh 5vw; text-align: center; background-color:#2a2b2f; border-radius: 20px; padding: 10px 0 10px 0px">
                             <h3>Parts You Need</h3>
                             <hr>
@@ -408,8 +402,7 @@
                                     <select id="sel_builder1" name="sel_builder1">
                                     <option value="name" selected="selected">Parts Name</option>
                                     <option value="type">Parts Type</option>
-                                    <!-- <option value="creation_time">Creation_date</option> -->
-                                    <option value="keywords">Keywords</option>
+                                    <option value="keyword">Keywords</option>
                                 </select>
                                     <input type="text" id="content1" name="content1" class="input-text" placeholder="BBa_">
                                 </div>
@@ -422,49 +415,13 @@
                         </div>
                     </form>
 
-                    <!-- 
-<form id="sequence_validation" style="position:absolute;visibility:hidden;" enctype="multipart/form-data" action="/sequence_validation_post/" method="POST">
-                        <!~~ action="/parts_result/" ~~>
-                        <div style="width: 30vw;margin:-4vh 0 0vh 5vw; text-align: center; background-color:#2a2b2f; border-radius: 20px; padding: 10px 0 10px 0px">
-                            <h3>Sequence Validation</h3>
-                            <hr>
-                            <h5 style="text-align: left; margin-left: 0vw">
-
-                                <div style="white-space: nowrap;">
-                                    <div style="text-align:right;padding: 0px 0px 0px 0px; width: 10vw;display: inline-block;">Coding sequence:</div>
-                                    <div style="display: inline-block;"> <input class="input-text" type="text" name="sequence" id="sequence" onblur="check_seq('sequence')"></div> <span class="mytooltip" title="Please input the conding sequence you want to validate"><span class="glyphicon glyphicon-question-sign"></span></span>
-                                </div>
-                                <br><br>
-
-                                <div style="white-space: nowrap;">
-                                    <div style="text-align:right;padding: 0px 0px 0px 0px;margin: 0 1vw 0 0vw ; width: 10vw;display: inline-block;">Organism:</div>
-                                    <div style="display: inline-block;">
-                                        <select name="org" style="color: black">
-                                            <option value="ecoli" selected="selected">ecoli</option>
-                                            <option value="yeast">yeast</option>
-                                        </select>
-                                    </div>
-                                    <span class="mytooltip" title="Please select your engineered organism."><span class="glyphicon glyphicon-question-sign"></span></span>
-                                </div>
-
-                            </h5>
-                        </div>
-
-                        <div style="text-align: right; margin: -10vh 10vw 0vh 40.5vw;position:absolute; z-index:10;">
-                            <input class="input-submit2" type="submit" value="Submit">
-                        </div>
-                    </form>
- -->
-
-
-
                 </div>
 
 
             </div>
         </div>
     </div>
-    <!-- <Footer style="text-align: center;margin:97vh 0vw 0vh 0vw; position: fixed;;background-color: rgba(0, 0,0,0.6); width: 100vw; height: 3vh;">Contact Us</Footer> -->
+    
 </body>
 
 </html>

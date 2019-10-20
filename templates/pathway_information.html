@@ -7,13 +7,11 @@
     <title>pathway result</title>
     <link href="/media/css/pages.css" rel="stylesheet" type="text/css">
     <link href="/media/css/alink.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="../media/img/menu.png" />
 
-    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
     <script src="/media/js/d3.v5.min.js"></script>
-    <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -68,24 +66,8 @@
             vertical-align: middle;
             text-align: center;
         }
-        /* .table_class2{
-            text-align: center;
-            color:black;
-            border-collapse:separate;
-            border-collapse:collapse;
-            width: 100%;
-            font-size: 1px;
-            box-shadow: 1px 1px 5px #888888;
-            border-radius: 1px red;
-        }
-        .table_class2 td, .table_class2 th{
-	        font-size:15px;
-	        border:1px solid #888888;
-	        padding:3px 7px 2px 7px;
-        } */
-        
         .home_img {
-            /* style="position: fixed; margin: 80vh 0vw 0vh 92vw;  width: 5vw"  */
+            
             position: fixed;
             margin: 80vh 0vw 0vh 92vw;
             width: 6vw;
@@ -444,9 +426,6 @@
                     }
 
                 NS(id_, svg, infor_id, path_id, k_n, p2, path_data)
-                    // var svg = d3.select('#svg_'+path_id+'_ball1');	
-                    // var infor_id = path_id+'_'+k_n;
-                    // NS(id,svg, infor_id, path_id, k_n)
 
             }
 
@@ -535,11 +514,6 @@
                     .on("click", function(d) {
                         d3.select("#node-C00099")
                             .attr("fill","red")
-//                         self.svg.selectAll(".node")// 
-//                             .classed("selected", false);
-//                         self.svg.select("#node-" + d.id)
-//                             .attr("fill",'red')
-//                          .classed("selected", true)
                             ;
                         self.node_selected(d.id);
                     });
@@ -592,6 +566,7 @@
                 svgList[i].draw();
             }
         });
+
     </script>
 
 
@@ -615,15 +590,9 @@
         <img src="../media/img/user.png" alt="123" title="already log in" style="width: 1.6%;position: absolute; margin: 2.3vh 0vw 0vh 91vw"> {% else %}
         <a href="/login/"><img src="/../media/img/log_in.png" onclick="openme()" alt="123" title="log in" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 91vw"></a>
         {% endif %}
-        <img src="/../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw">
+        <a href="/pathlab/"><img src="/../media/img/pathlab2.png" alt="123" title="Go Back TO Tongji_iGEM" style="width: 8%; position: absolute;margin:1.5vh 0vw 0vh 3vw"></a>
         <a href="/logout/"><img src="/../media/img/log_out.png" alt="123" title="log out" style="width: 1.5%; position: absolute;margin:2.5vh 0vw 0vh 95vw"> </a>
     </div>
-
-<!-- 
-    <div class="home_img">
-        <a href="/pathlab/"><img src="/../media/img/menu.png" alt="logo" width="100%"></a>
-    </div>
- -->
 
     <div id="menue_hide" style="text-align:left; width: 82vw; margin-left: 9vw;overflow: hidden;">
         <br>
@@ -632,21 +601,23 @@
             {{ path_information.0.1 }} {% for path in path_information %}
             <b></b> -> {{ path.2 }} {% endfor %}
         </div>
-        <!--         {{ compounds_infor }} -->
-
-        <!-- <h3>Selection your enzyme that you need</h3> 
-        <div id="sel_box_report" style="width: 30vw; height: 30vh; border:2px solid cornflowerblue;border-radius: 20px ">
-            
-        </div> -->
         <h1>Pathway Details</h1>
         <form action="/Report/" method="POST">
 
             {% for path in path_information %} {% with forloop.counter as k %}
             <hr style="height:2px;border:none;border-top:5px dotted lightskyblue; width:79vw">
 
+            {% with path.0 as reaction_ID %}
+            
             <h2>
+            {% if reaction_ID|length == 6 %}
                 Reaction {{ k }} : <a href="https://www.genome.jp/dbget-bin/www_bget?rn:{{ path.0 }}"> {{ path.0 }}<br></a>
+            {% else %}
+                Reaction {{ k }} : <a href="https://lcsb-databases.epfl.ch/atlas/Pathways/loadRatGraph/{{ path.0|slice:'1:7' }}"> {{ path.0 }}<br></a>
+            {% endif %}
             </h2>
+            
+            {% endwith %}
 
             <div id="infor_box" style="border-left:3px solid gray; margin-left: 1vw; padding: 0px 0px 0px 10px; ">
                 <b>Compounds ID:</b> <a href="https://www.genome.jp/dbget-bin/www_bget?cpd:{{ path.4 }}">{{ path.4 }}</a> -> <a href="https://www.genome.jp/dbget-bin/www_bget?cpd:{{ path.5 }}">{{ path.5 }}</a>
@@ -658,16 +629,7 @@
             <br>
 
             <div style="margin-left: 1vw; background-color: rgba(255,255,255,1); width:50vw;height: 50vh;border-radius: 10px;text-align: center;box-shadow:0px 0px 20px 0px rgba(0,0,0,0.5) inset">
-                <!-- {{ path.1 }} -> {{path.2}}<br>
-                    <div id="{{ path.0 }}_{{ path.1 }}_ball1" > ball</div>-> 
-                    <div id="{{ path.0 }}_{{ path.2 }}_ball2" > ball</div> -->
-                <!-- <b id="{{ path.0 }}_{{ path.1 }}_{{ k }}"> ball </b>  -> <b id="{{ path.0 }}_{{ path.2 }}_{{ k }}">ball</b>  -->
-                <!-- <b id="{{ path.0 }}_{{ k }}_ball1"> {{ path.1 }} </b>  -> <b id="{{ path.0 }}_{{ k }}_ball2">{{ path.2 }}</b>  -->
-                <!-- <b id="{{ path.0 }}_{{ k }}_ball1" style="background-color: antiquewhite;width: 6vw;border: #3489f3 "> ball1 </b>  -> <b id="{{ path.0 }}_{{ k }}_ball2"> ball2 </b>  -->
                 <svg id="svg_{{ path.0 }}_ball1" style="width:50vw;height: 50vh;border-radius:15px;"></svg>
-                <!-- <button type="button" id="{{ path.0 }}_{{ k }}_ball1" class="ball_style"> {{ path.4 }} </button>  ->  -->
-                <!-- <button type="button" id="{{ path.0 }}_{{ k }}_ball2" class="ball_style"> {{ path.5 }} </button>  -->
-
             </div>
 
             <br>
@@ -677,7 +639,7 @@
                 <br>
                 <h3>
                     <p style="margin:2vh 0vw 2vh 7vw;  display:inline">ID:</p>
-                    <b readonly="readonly" style="height: 10vh" id="{{ path.0 }}_{{ k }}_ID">{{ path.4 }}</b>
+                    <b readonly="readonly" style="height: 10vh" id="{{ path.0 }}_{{ k }}_ID"><a href="https://www.genome.jp/dbget-bin/www_bget?cpd:{{ path.4 }}">{{ path.4 }}</a></b>
                     </h3>
                     <p style="margin:2vh 4.7vw 0vh 2vw; display:inline">Name:</p>
                     <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_Name">{{ path.6.0 }}</b><br>
@@ -696,7 +658,7 @@
                     <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_CAS">{{ path.6.4 }}</b><br>
                      
                     <p style="margin:0vh 3vw 0vh 2vw; display:inline">PubChem:</p>
-                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_PubChem">{{ path.6.5 }}</b><br>
+                    <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_PubChem"><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{path.6.5}}">{{ path.6.5 }}</a></b><br>
                     
                     <p style="margin:0vh 3vw 0vh 2vw; display:inline">ChEMBL:</p>
                     <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_ChEMBL">{{ path.6.6 }}</b><br>
@@ -705,16 +667,13 @@
                     <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_db_PDB-CCD">{{ path.6.7 }}</b><br>
                     
                     <p style="margin:0vh 3vw 0vh 2vw; display:inline">Structure:</p>
-<!--                     <b readonly="readonly" style="height: 2vh" id="{{ path.0 }}_{{ k }}_REMARK">{{ path.6.8 }}</b><br> -->
+
                     <img style="margin-left:5vw;width:10vw" id="{{ path.0 }}_{{ k }}_IMG" src="/../media/img/compound_img/{{ path.4 }}.jpg" alt="123">
                 </div>
                 <br><br><br>
 
             </div>
 
-
-            <!-- {{ path.3.1 }}<br><br> -->
-            <!-- <div style="width: 10vw;background-color: black;color: aliceblue; border: 2px solid black;border-radius: 10px;text-align: center;" onclick="sel_seq_show()">Selection result</div>  -->
 
             <div id="{{ path.0 }}_{{ k }}" class="enzyme_selection">Enzyme Selection result</div>
             <br>
@@ -741,18 +700,11 @@
                         {% endfor %}
                     </tr>
                     {% endfor %}
-
-                    <!-- <tr>
-                            {% for i in sel_result.0 %}
-                                <td>{{ i }}</td>
-                            {% endfor %}
-                        </tr> -->
                 </table>
                 {% endwith %}
 
                 <br><br>
 
-                <!-- {{ path.3.2 }}<br><br> -->
                 {% with path.3.2 as seq %}
                 <table class="custom_tb">
                     <thread>
@@ -769,36 +721,24 @@
                     {% for i in seq %}
                     <tr>
                         <td><input type="radio" name="{{ path.3.0 }}_{{k}}" value="{{ path.0 }}|{{ path.1 }}|{{path.2}}|{{ i.0 }}" checked="checked"></td>
-                        <!--{{ path.3.0 }} 酶的编号  {{ path.1 }} -> {{path.2}} 反应物名字 {{ path.0 }} 反应编号 -->
+                        
                         <td>{{ i.0 }}</td>
                         <!--菌种名字-->
                         <td>{{ i.1 }}</td>
-                        <!-- <td style="overflow: hidden;">{{ i.2 }}</td> -->
+                        
                         <td>
                             <div style="text-align: center; width: 37vw;padding: 0; overflow: hidden; text-overflow:ellipsis; color:red"><a href="{% url 'full_sequence' i.2 %}"> {{ i.2 }}</a></div>
                         </td>
-                        <!-- <th style="padding: 0"><b style="text-align: center; width: 30vw;padding: 0; overflow:hidden; color:red"> {{ i.2 }}</b> </th> -->
-                        <!-- {% for j in i %} -->
-                        <!-- <th>{{ j }}</th> -->
-                        <!-- {% endfor %} -->
                         <td>CAI</td>
                         <td><a href="{% url 'sequence_validation' i.2 org %}">optimisim</a></td>
                     </tr>
                     {% endfor %}
-                    <!-- <tr>
-                            {% for i in seq.0 %}
-                            <td>{{ i }}</td>
-                            {% endfor %}
-                        </tr> -->
                 </table>
                 {% endwith %}
             </div>
 
             <br><br><br><br> {% endwith %} {% endfor %}
-
             <br>
-            <!-- {{ enzyme_data }} -->
-
             <div style="width: 10vw;">
                 <input style="visibility: hidden" type="text" name="enzy" value="{{ enzymes|join:',' }}">
                 <input style="visibility: hidden" type="text" name="org" value="{{ org }}">
